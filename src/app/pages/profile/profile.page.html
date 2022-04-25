@@ -1,0 +1,142 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  style="text-align: center;">
+    <ion-row>
+      <ion-col>
+        <div></div>
+      </ion-col>
+      <ion-col>
+        <div><ion-button color="primary"><ion-icon name="shield-checkmark-outline"></ion-icon></ion-button></div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <!-- <ion-icon style="font-size: 30px;" src="assets/icons/share.svg"></ion-icon> -->
+          <ion-icon (click)="goUsersettings()" style="margin-left: 19px; font-size: 30px;" name="settings-outline"></ion-icon></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="centerx">
+    <img style="width: 70px;
+    height: 70px;" src="assets/img/avatar.png" alt="">
+   
+  </div>
+
+  <div class="centerx">
+    <h1 style="font: normal normal 600 24px/28px Worksans;
+    letter-spacing: 0.72px;
+    color: #6A6A6A;
+    opacity: 1;">{{userinfo?.full_name | titlecase}}</h1>
+    <p style="font: normal normal normal 18px/21px Worksans; margin-top: -10px;
+    letter-spacing: 0.54px;
+    color: #6A6A6A;
+    opacity: 1;">{{usertype}}</p>
+  </div>
+<div class="center">
+  <ion-row>
+    <ion-col>
+      <div>
+        <ion-button color="light">
+          {{!activation?0:activation}}
+        </ion-button>
+        <p style="font: normal normal 600 14px/16px Worksans;
+        letter-spacing: 0.42px;
+        color: #6A6A6A;
+        opacity: 1;">Invites</p>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div> <ion-button color="light">
+        {{!upgrade2?0:upgrade2}}
+      </ion-button>
+      <p style="font: normal normal 600 14px/16px Worksans;
+      letter-spacing: 0.42px;
+      color: #6A6A6A;
+      opacity: 1;">Upgrades</p>
+    </div>
+    </ion-col>
+    <ion-col>
+      <div> <ion-button (click)="goLifeline()" color="light">
+        {{!lifeline?0:lifeline}}
+      </ion-button>
+      <p style="font: normal normal 600 14px/16px Worksans;
+      letter-spacing: 0.42px;
+      color: #6A6A6A;
+      opacity: 1;">Lifelines</p>
+    </div>
+    </ion-col>
+  </ion-row>
+
+  <!-- <p style="text-decoration: underline;
+  font: normal normal medium 12px/14px Worksans;
+  letter-spacing: 0.36px;
+  color: #6A6A6A;
+  opacity: 1;">Terms & Conditions</p> -->
+</div>
+<!-- 
+<ion-item color='dark' class="ion-padding">
+  
+  <ion-label class="ion-text-wrap">
+   
+  
+  </ion-label>
+
+  <ion-button [routerLink]="['/activate-wallet']" *ngIf="!activated" style="margin-top: 30%;" slot="end" color="medium">
+  <p style="font: normal normal bold 12px/14px Worksans;
+    letter-spacing: 0px;
+    color: #6A6A6A;
+    opacity: 1;">Activate account</p>
+    </ion-button>
+  <ion-button *ngIf="activated" style="margin-top: 30%;" slot="end" color="medium">
+  <p style="font: normal normal bold 12px/14px Worksans;
+    letter-spacing: 0px;
+    color: #6A6A6A;
+    opacity: 1;">Account activated</p>
+    </ion-button>
+ 
+  </ion-item> -->
+
+  <div class="ion-padding container" style="background: #3f3f3f 0% 0% no-repeat padding-box; box-shadow: 0px 3px 6px #3f3f3f;
+  border-radius: 20px;">
+    <div>
+     <span style="color: ghostwhite;">Earn 160 naira and 10,000 zits when a friend sign up on eUzzit with your invite code</span> 
+    </div>
+    <ion-item style="--ion-background-color:#3f3f3f;">
+      <ion-button color="medium" (click)="shareRef()"><ion-icon color="dark" name="share-social-outline"></ion-icon></ion-button>
+      <ion-button [routerLink]="['/activate-wallet']" *ngIf="!activated" slot="end" color="medium">
+        <p style="font: normal normal bold 12px/14px Worksans;
+          letter-spacing: 0px;
+          color: #3f3f3f;
+          opacity: 1;">Activate account</p>
+          </ion-button>
+        <ion-button *ngIf="activated" slot="end" color="medium">
+        <p style="font: normal normal bold 12px/14px Worksans;
+          letter-spacing: 0px;
+          color: #6A6A6A;
+          opacity: 1;">Account activated</p>
+          </ion-button>
+    </ion-item>
+  </div>
+
+  <div class="ion-padding container" style="margin-top: 20px; background: #673BB8 0% 0% no-repeat padding-box; box-shadow: 0px 3px 6px #00000029;
+  border-radius: 20px;">
+    <div>
+     <span style="color: ghostwhite;">Earn 800 & 100,000 Zit when a Classic user upgrades to premium with your premium Code.</span> 
+    </div>
+    <ion-item style="--ion-background-color:#673BB8;">
+      <ion-button size="small" [routerLink]="['/upgrade-account']" *ngIf="usertype!='PREMIUM'" slot="end" color="medium"><p style="font: normal normal bold 12px/14px Worksans;
+        letter-spacing: 0px;
+        color: #6A6A6A;
+        opacity: 1;">Upgrade account</p></ion-button>
+      <ion-button size="small" *ngIf="usertype==='PREMIUM'" slot="end" color="medium"><p style="font: normal normal bold 12px/14px Worksans;
+        letter-spacing: 0px;
+        color: #6A6A6A;
+        opacity: 1;">Account upgraded</p></ion-button>
+    </ion-item>
+  </div>
+</ion-content>

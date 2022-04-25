@@ -1,0 +1,110 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Electricity</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <ion-item (click)="selectBiller()">
+    <ion-thumbnail *ngIf="img" slot="start">
+      <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+      height: 37px;"  [src]="img" />
+    </ion-thumbnail>
+    <ion-label color="primary">{{pageTitle}}</ion-label>
+      <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+  </ion-item>
+
+  <form [formGroup]="electricityForm" (ngSubmit)="buyElectricity()">
+    <ion-item *ngIf="show">
+      <ion-label style="margin-top: -10px;" color="primary" class="ion-padding" position="stacked">Choose Service</ion-label
+      >
+      <ion-select
+        formControlName="service_id"
+        interface="alert"
+        (ionChange)="verifyUser()"
+      >
+        <ion-select-option
+          *ngIf="sbiller['prepaid']"
+          value="{{sbiller['prepaid']}}"
+          [innerHTML]="'Prepaid'"
+        ></ion-select-option>
+        <ion-select-option
+          *ngIf="sbiller['postpaid']"
+          value="{{sbiller['postpaid']}}"
+          [innerHTML]="'Postpaid'"
+        ></ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="primary" position="floating">Enter Meter Number</ion-label>
+
+      <ion-input  
+      required
+      formControlName="account"
+      type="tel"
+      (ionBlur)="verifyUser()"
+     style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+
+    <ion-item  *ngIf="accountNameValid">
+      <ion-label  *ngIf="accountNameValid" color="primary" position="floating">Account name</ion-label>
+
+      <ion-input  
+      required
+      formControlName="account_name"
+      readonly
+      type="text"
+     style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label  color="primary" position="floating">Amount</ion-label>
+
+      <ion-input
+      required
+      formControlName="amount"
+      type="number"
+      inputmode="number"
+     style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+    <section class="ion-padding">
+      
+      <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+    </section>
+   
+      <section class="ion-padding">
+
+        <ion-button
+            color="primary"
+            expand="block"
+            size="large"
+            fill="outline"
+            type="submit"
+            [disabled]="electricityForm.invalid"
+          >
+            <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+            <ion-label *ngIf="submitSend">Validating&hellip;</ion-label>
+            <ion-label *ngIf="!submitSend">Confirm</ion-label>
+          </ion-button>
+      
+        <!-- <ion-button (click)="confirmModal()" color="primary" size="large" fill="outline" expand="block">Confirm</ion-button> -->
+      </section>
+
+    </form>
+
+</ion-content>
+
+

@@ -1,0 +1,163 @@
+ion-content{
+    .top-box{
+        --background: var(--ion-color-primary);
+        width: 100%;
+        border-radius: 0;
+        // z-index:10;
+        height: 50px;
+    }
+
+    .top-box-2{
+        // z-index:11;
+        // margin:10px;
+        background: white;
+        .iconleft{
+            float: left;
+            padding: 4px 15px 4px 0px; 
+        }
+        .info-box{
+            padding-left: 110px;
+        }
+        --border-color:none;
+        --border-style: none;
+                
+        ion-item{
+            --border-color:none;
+            --border-style: none;
+        }
+    }
+
+    p{
+        font-family: "Quicksand";
+    }
+    
+ion-button{
+    text-align: center;
+    margin: 20px 0 60px;
+}
+
+
+}
+
+.wrap-slides-profile{
+	width: 120%;
+}
+
+.main_account{
+    background: #6C18A4;
+}
+
+.shoppy_account{
+    background: #3827B2;
+}
+
+.extra_account{
+    background: #34047A;
+}
+
+.merchant_account{
+    background: #E51EAD;
+}
+
+.euzzit_coin{
+    background: goldenrod;
+}
+
+
+svg {
+    width: 100px;
+    display: block;
+    margin: 20px auto 0;
+  }
+  
+  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    &.circle {
+      -webkit-animation: dash .9s ease-in-out;
+      animation: dash .9s ease-in-out;
+    }
+    &.line {
+      stroke-dashoffset: 1000;
+      -webkit-animation: dash .9s .35s ease-in-out forwards;
+      animation: dash .9s .35s ease-in-out forwards;
+    }
+    &.check {
+      stroke-dashoffset: -100;
+      -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+      animation: dash-check .9s .35s ease-in-out forwards;
+    }
+  }
+  
+  p {
+    text-align: center;
+    margin: 20px 0 10px;
+    font-size: 1.25em;
+    &.success {
+      color: #73AF55;
+    }
+    &.error {
+      color: #D06079;
+    }
+  }
+
+  h4 {
+      text-align: center;
+      margin: 20px 0 30px;
+      &.success {
+        color: #73AF55;
+      }
+  }
+  
+  
+  @-webkit-keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @-webkit-keyframes dash-check {
+    0% {
+      stroke-dashoffset: -100;
+    }
+    100% {
+      stroke-dashoffset: 900;
+    }
+  }
+  
+  @keyframes dash-check {
+    0% {
+      stroke-dashoffset: -100;
+    }
+    100% {
+      stroke-dashoffset: 900;
+    }
+  }
+  
+
+  ion-card {
+    background: white;
+    width: 100vw;
+    // height: 90vh;
+    position: fixed;
+    top: 0vh;
+    left: 0vw;
+    z-index: 10000000000;
+    // transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

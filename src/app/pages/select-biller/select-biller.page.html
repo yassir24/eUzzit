@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Enter Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="CableTVForm" (ngSubmit)="onRequestCable()">
+  
+    <ion-item (click)="selectBiller()">
+      <ion-thumbnail *ngIf="type" slot="start">
+        <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+        height: 37px;" src="assets/img/{{type}}.png" />
+      </ion-thumbnail> 
+      <ion-label color="primary">{{providername}}</ion-label>
+          <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+
+    </ion-item>
+    <!-- <ion-label style="margin-top: -10px;" color="primary" class="ion-padding" position="stacked">Product Name</ion-label> -->
+    <ion-item (click)="selectproduct()">
+      <ion-label color="primary">{{productname}}</ion-label>
+          <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+
+    </ion-item>
+   
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Amount</ion-label>
+
+      <ion-input style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" type="text" placeholder="Amount" value="₦{{productamount | number}}" readonly></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="primary" position="floating">Decoder number</ion-label>
+
+      <ion-input style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" placeholder="Decoder number" type="tel"
+              maxlength="12"
+              (input)="change($event.target.value)"
+              required
+              formControlName="account"
+              type="text"
+              (ionBlur)="verifyUser()"
+              inputmode="numeric"></ion-input>
+    </ion-item>
+    <ion-item  *ngIf="accountNameValid">
+      <ion-label *ngIf="accountNameValid"  color="primary" position="floating">Account name</ion-label>
+
+      <ion-input  required
+      formControlName="customername"
+      type="text"
+      readonly style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" placeholder="Phone Number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="shortname == 'startimes'" color='medium' class="ion-padding">
+      <ion-input required
+      formControlName="amount"
+      type="number" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" placeholder="Amount" readonly></ion-input>
+    </ion-item>
+    <section class="ion-padding">
+      
+      <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+    </section>
+    <section class="ion-padding">
+        
+      <ion-button (click)="onRequestCable()"
+      [disabled]="CableTVForm.invalid || submitted" color="primary" size="large" fill="outline" expand="block">
+      <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+              <ion-label *ngIf="submitted">Validating&hellip;</ion-label>
+              <ion-label *ngIf="!submitted">Continue</ion-label>
+      </ion-button>
+    </section>
+    </form>
+</ion-content>
+
+

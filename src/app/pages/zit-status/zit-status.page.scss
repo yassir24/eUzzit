@@ -1,0 +1,89 @@
+// h1 {
+//   margin: 0;
+// }
+
+.loan-access-content {
+
+    h1 {
+      text-align: center;
+      font-weight: 900;
+      color: rgb(75, 75, 75);
+      margin: 0px;
+    }
+  
+  
+    .write-up {
+      background-color: rgba(173, 216, 230, 0.288);
+      color: rgb(105, 105, 105);
+      margin: 0;
+      line-height: 1.7;
+    }
+  
+  
+    .loan-limit-cards {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    
+      .loan-limit-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: white;
+        margin: 12px 0;
+        border: 1px rgb(18, 132, 224) solid;
+        border-radius: 10px;
+        color: grey;
+        font-weight: 900;
+      }
+
+      .loan-limit-card-price {
+        font-size: 1.5em;
+        margin: 0;
+        margin-bottom: 15px;
+      }
+    }
+  
+  
+  
+  
+  
+    .pension-prices {
+      color:rgb(75, 75, 75);
+  
+      .header {
+        font-size: 0.9em;
+        font-weight: 900;
+        text-align: center;
+      }
+  
+      .card {
+        border:rgb(18, 132, 224) 2px solid;
+        border-radius: 10px;
+        display: flex;
+        padding: 0;
+        overflow: hidden;
+        margin-bottom: 15px;
+  
+        .price-zit {
+          width: 60%;
+          height: 100%;
+          margin: 0;
+          padding: 15px;
+          text-align: center;
+          font-weight: 900;
+        }
+        .price-naira {
+          flex: 1;
+          background:rgb(18, 132, 224);
+          height: 100%;
+          margin: 0;
+          padding: 15px;
+          text-align: center;
+          color: white;
+          font-weight: 900;
+        }
+      }
+    }
+  }

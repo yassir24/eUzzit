@@ -1,0 +1,16 @@
+<ion-content class="blur">
+<div>
+  <div>
+      <section class="ion-padding">
+      
+    <ion-button (click)="confirmWallet(extra)" color="primary" size="large" fill="outline" expand="block"> <ion-spinner name="crescent" *ngIf="loadingwallet"></ion-spinner> Extra Account ₦{{extra?.balance}}</ion-button>
+  </section>
+ 
+    <section class="ion-padding">
+    
+      <ion-button (click)="confirmWallet(main)" color="primary" size="large" fill="outline" expand="block"> <ion-spinner name="crescent" *ngIf="loadingwallet"></ion-spinner> Main Account ₦{{main?.balance}}</ion-button>
+    </section>
+  </div>
+
+</div>
+</ion-content>

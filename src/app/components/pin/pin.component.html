@@ -1,0 +1,183 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar>
+    <ion-title>Confirm transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div style="margin-top: 20px;" id="outer">
+    
+    <div *ngIf="type ==='airtime'" id="inner">
+      <div style="text-align: left;">
+        <ion-label>Product</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{name| titlecase}} Airtime</ion-label><br>
+        <ion-label>Customer Number</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{data.phone_no}} </ion-label><br>
+        <ion-label>Amount</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{data.amount}} NGN </ion-label>
+      </div>
+    </div>
+    <div *ngIf="type ==='internet'" id="inner">
+      <div style="text-align: left;">
+        <ion-label>Product</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{name| titlecase}} Data</ion-label><br>
+        <ion-label>Customer Number</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{data.phone_no}} </ion-label><br>
+        <ion-label>Amount</ion-label><br>
+        <ion-label style="font-weight: bold;"> {{data.amount | number}} NGN </ion-label>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 30px;">
+    <small class="ion-text-center">{{passcodeLabel}}</small></div>
+  <div
+    text-center
+    large
+    margin-vertical
+    [class.ILS_shake]="passcodeWrong"
+    [class.ILS_none]="!passcodeWrong"
+    style="margin-top: 10px; text-align: center;"
+  >
+    <ion-icon color="primary"
+      [name]="enteredPasscode.length>0 ? 'radio-button-on' : 'radio-button-off'"
+      size="large"
+    ></ion-icon>
+    <ion-icon color="primary"
+      [name]="enteredPasscode.length>1 ? 'radio-button-on' : 'radio-button-off'"
+      size="large"
+    ></ion-icon>
+    <ion-icon color="primary"
+      [name]="enteredPasscode.length>2 ? 'radio-button-on' : 'radio-button-off'"
+      size="large"
+    ></ion-icon>
+    <ion-icon color="primary"
+      [name]="enteredPasscode.length>3 ? 'radio-button-on' : 'radio-button-off'"
+      size="large"
+    ></ion-icon>
+  </div>
+<div>
+  <ion-grid class="ion-text-center keys" >
+    <ion-row>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('1')"
+        >
+          1
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('2')"
+          >2</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('3')"
+          >3</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('4')"
+          >4</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('5')"
+          >5</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('6')"
+          >6</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('7')"
+          >7</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('8')"
+          >8</ion-button
+        >
+      </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('9')"
+          >9</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col> </ion-col>
+      <ion-col>
+        <ion-button
+          fill="outline"
+          shape="round"
+          size="large"
+          (click)="digit('0')"
+          >0</ion-button
+        >
+      </ion-col>
+      <ion-col> </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar style="--ion-background-color:#F5F4F4;">
+ 
+  <ion-grid>
+    <ion-row>
+      
+      <ion-col size="6">
+        <ion-button fill="outline" shape="round" expand="block" size="small" color="warning" (click)="allClear()">Clear</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button fill="outline" shape="round" color="dark" expand="block"  size="small" (click)="close()">Close</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-toolbar>
+</ion-footer>

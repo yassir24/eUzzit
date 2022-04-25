@@ -1,0 +1,238 @@
+<ion-header>
+  <ion-toolbar>
+  
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ page_title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form
+      [formGroup]="editProfileForm"
+      *ngIf="(userprofile | async) as profile;"
+      (submit)="validateSend()"
+    >
+      <ion-grid>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input
+              formControlName="first_name"
+              [ngModel]="profile.first_name"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item
+            *ngIf="submitted && !editProfileForm.controls.first_name.valid"
+          >
+            <ion-text color="danger" class="form-error">
+              Please enter your first name
+            </ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Middle Name</ion-label>
+            <ion-input
+              formControlName="middle_name"
+              [ngModel]="profile.middle_name"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item
+            *ngIf="submitted && !editProfileForm.controls.middle_name.valid"
+          >
+            <ion-text color="danger" class="form-error">
+              Please enter your middle name
+            </ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Surname</ion-label>
+            <ion-input
+              formControlName="last_name"
+              [ngModel]="profile.last_name"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-item
+            *ngIf="submitted && !editProfileForm.controls.last_name.valid"
+          >
+            <ion-text color="danger" class="form-error">
+              Please enter your Surname
+            </ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label position="floating"
+          >Select Gender <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          formControlName="gender"
+          placeholder="Select One"
+          [ngModel]="profile.gender"
+        >
+          <ion-select-option value="FEMALE">Female</ion-select-option>
+          <ion-select-option value="MALE">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">D.O.B</ion-label>
+        <ion-input
+          formControlName="dob"
+          [ngModel]="profile.dob"
+          type="date"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="submitted && !editProfileForm.controls.dob.valid">
+        <ion-text color="danger" class="form-error">
+          Enter date of birth
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input
+          formControlName="username"
+          [ngModel]="profile.username"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="submitted && !editProfileForm.controls.username.valid">
+        <ion-text color="danger" class="form-error">
+          Please enter your username
+        </ion-text>
+      </ion-item>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Phone</ion-label>
+              <ion-input
+                formControlName="phone"
+                [ngModel]="profile.phone"
+                type="tel"
+                maxLength="11"
+              ></ion-input>
+            </ion-item>
+            <ion-item
+              *ngIf="submitted && !editProfileForm.controls.phone.valid"
+            >
+              <ion-text color="danger" class="form-error">
+                Please enter your Phone
+              </ion-text>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          formControlName="email"
+          [ngModel]="profile.email"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="submitted && !editProfileForm.controls.email.valid">
+        <ion-text color="danger" class="form-error">
+          Please enter your email
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input
+          formControlName="address"
+          [ngModel]="profile.address"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="submitted && !editProfileForm.controls.address.valid">
+        <ion-text color="danger" class="form-error">
+          Please enter your address
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"
+          >Select State <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          placeholder="Select One"
+          (ionChange)="change($event.target.value)"
+          formControlName="city"
+          [ngModel]="profile.city"
+        >
+          <ion-select-option [value]="items.id" *ngFor="let items of states"
+            >{{items.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="submitted && !editProfileForm.controls.city.valid">
+        <ion-text color="danger" class="form-error">
+          Please choose your State
+        </ion-text>
+      </ion-item>
+
+      <ion-item *ngIf="stateid">
+        <ion-label position="floating"
+          >Select L.G.A <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          (ionChange)="change2($event.target.value)"
+          placeholder="Select One"
+          formControlName="lga_id"
+          [ngModel]="profile.lga_id"
+        >
+          <ion-select-option
+            *ngFor="let items of states[+stateid-1].lgas"
+            [value]="items.id"
+            >{{items.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="submitted && !editProfileForm.controls.lga_id.valid">
+        <ion-text color="danger" class="form-error">
+          Please choose your L.G.A
+        </ion-text>
+      </ion-item>
+
+      <ion-button
+        block
+        color="primary"
+        class="mt-10"
+        type="submit"
+        [disabled]="editProfileForm.invalid || submitted"
+      >
+        <i class="fa fa-user"></i> Save Profile
+      </ion-button>
+
+      <ion-button
+        block
+        color="secondary"
+        class="mt-10"
+        (click)="settingsPage()"
+      >
+        <i class="fa fa-cog"></i> Settings
+      </ion-button>
+    </form>
+
+</ion-content>
+
+<ion-content *ngIf="success">
+  <div class="ion-padding">
+    <app-success [header]="successheader" [messages]="successmessages">
+    </app-success>
+  </div>
+</ion-content>
+

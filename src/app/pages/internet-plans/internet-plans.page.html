@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Plan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item   *ngFor="let item of itemsdata"
+  (click)="chooseProduct( item )" color='medium' class="ion-padding">
+    <ion-label style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;">
+    <h2>{{ item.description+' for &#8358;'+ item.Amount+' valid for '+ item.validity }} </h2>
+    <ion-text color="primary">&#8358;{{ abs(item.Amount) }}</ion-text>
+  </ion-label>
+
+
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <section class="ion-padding">
+      
+    <ion-button (click)="closeModal()" color="primary" size="large" fill="outline" expand="block">Cancel</ion-button>
+  </section>
+</ion-footer>

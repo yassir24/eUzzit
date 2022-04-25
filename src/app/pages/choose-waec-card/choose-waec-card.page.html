@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Choose Biller</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item  *ngFor="let network of list" color='medium' class="ion-padding"  (click)="changeTitle(network)">
+    <ion-thumbnail slot="start">
+      <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+      height: 37px;" [src]="network.image" />
+    </ion-thumbnail>
+    <ion-label style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;">{{network.name}} : &#8358;{{abs(network.amount)}}</ion-label>
+  </ion-item>
+
+</ion-content>

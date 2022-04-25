@@ -1,0 +1,70 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Activity
+    </ion-title>
+
+    <!-- <ion-buttons slot="primary">
+      <ion-button (click)="goToExtraWallet()" color="light">
+        <img src="../../../assets/images/foward.png" alt="foward" />
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>
+    <h3 style="text-align: left; margin-left: 20px;
+      font: normal normal normal 15px/23px poppins;
+      letter-spacing: 0.42px;
+      color: #5A5A5A;
+      opacity: 1;">
+      Recent activity from extra account
+      </h3>
+    
+      </div>
+    
+      <ion-list  style="margin-top: -10px;">
+        <ion-card *ngFor="let item of transactions"  (click)="presentTransaction(item)" style="background: #FFFFFF 0% 0% no-repeat;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        ">
+        <ion-item lines="none" detail>
+          
+          <ion-label class="ion-text-wrap">
+            <h3 style="text-align: left;
+           
+            letter-spacing: 1px;
+            color: #28272B;
+            opacity: 1;">{{item.type}}</h3>
+                  <p style="text-align: left;
+                  letter-spacing: 1px;
+                  color: #83828A;
+                  opacity: 1;"> {{item.description}}</p>
+                   <h6 class="txt6 pdt-2">{{item.created_at | date:'long'}}</h6>
+                 
+                </ion-label>
+                <ion-note
+              slot="end"
+              [class]="item.type=='deposit'? 'txt-success fw-600 fs-17' : 'txt-danger fw-600 fs-17'"
+              [id]="item.type"
+            >
+              {{ item.type === "REWARD" ? abs(item.amount)+' Zit' : '&#8358;' + ' '
+              + abs(item.amount) }}</ion-note
+            >
+        </ion-item>
+      </ion-card>
+       
+      </ion-list>
+
+      <section class="ion-padding">
+    
+        <ion-button (click)="loadMore()" color="primary" size="large" fill="outline" expand="block">
+          <ion-icon slot="start" name="eye"></ion-icon>
+      View More
+        </ion-button>
+      </section>
+
+</ion-content>

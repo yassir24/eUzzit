@@ -1,0 +1,7 @@
+{
+  "name": "euzzit-new-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

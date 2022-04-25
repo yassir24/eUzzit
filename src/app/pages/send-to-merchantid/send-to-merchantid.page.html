@@ -1,0 +1,154 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" class="fs-8"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="help()">
+        <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [scrollEvents]="true">
+  <app-success
+    *ngIf="success"
+    [header]="successheader"
+    [coins]="coins"
+    [messages]="successmessages"
+  >
+  </app-success>
+  <ng-container *ngIf="!sucsess">
+    <form
+      [formGroup]="sendMoneyForm"
+      (ngSubmit)="validateSend()"
+      *ngIf="loaded"
+    >
+      <ion-item>
+        <ion-label position="floating"
+          >Enter Merchant ID <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-input
+          required
+          (ionBlur)="verifyWallet()"
+          (ionChange)="walletHolder = ''"
+          formControlName="to_user"
+          type="tel"
+        ></ion-input>
+      </ion-item>
+      <!-- <ion-label color="primary" (click)="pickContact()">
+    
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        Browse contacts
+      </ion-label> -->
+
+      <ion-item
+        *ngIf="sendMoneyForm.controls.to_user.touched && sendMoneyForm.controls.to_user.invalid"
+        lines="none"
+      >
+        <ion-text color="danger" class="form-error">
+          Please enter a valid Merchant ID
+        </ion-text>
+      </ion-item>
+
+      <ion-item class="pdt-10 pdb-10" *ngIf="walletHolder">
+        <ion-label position="floating">Merchant Name</ion-label>
+        <ion-input
+          required
+          [value]="walletHolder"
+          type="text"
+          readonly
+        ></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="walletHolder">
+        <ion-label position="floating"
+          >Select Merchant Services
+          <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          formControlName="merchantid"
+          [interfaceOptions]="customActionSheetOptions"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let account of services"
+            value="{{account.id}}"
+            [innerHTML]="account.name"
+          ></ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item
+        *ngIf="sendMoneyForm.controls.wallet.invalid && sendMoneyForm.controls.wallet.touched"
+        lines="none"
+      >
+        <ion-text color="danger" class="form-error">
+          Please choose a valid Wallet
+        </ion-text>
+      </ion-item>
+
+      <ion-item class="pdt-10 pdb-10">
+        <ion-label position="floating">Enter Amount to Send</ion-label>
+        <ion-input
+          required
+          formControlName="amount"
+          type="number"
+          autofocus
+        ></ion-input>
+      </ion-item>
+
+      <ion-item
+        *ngIf="sendMoneyForm.controls.amount.invalid && sendMoneyForm.controls.amount.touched"
+        lines="none"
+      >
+        <ion-text color="danger" class="txt-danger">
+          Please enter a valid amount
+        </ion-text>
+      </ion-item>
+
+      <section class="ion-padding">
+      
+        <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+      </section>
+
+      <ion-item
+        *ngIf="sendMoneyForm.controls.wallet.invalid && sendMoneyForm.controls.wallet.touched"
+        lines="none"
+      >
+        <ion-text color="danger" class="form-error">
+          Please choose a valid Wallet
+        </ion-text>
+      </ion-item>
+
+      <div class="pd-20 txt-center ion-padding" text-center>
+        <ion-button
+          color="primary"
+          expand="block"
+          size="large"
+          type="submit"
+          [disabled]="!walletHolder || sendMoneyForm.invalid || submitSend"
+        >
+          <ion-spinner name="crescent" *ngIf="submitSend"></ion-spinner>
+          <ion-label *ngIf="submitSend">Validating Wallet &hellip;</ion-label>
+          <ion-label *ngIf="!submitSend">SEND MONEY</ion-label>
+        </ion-button>
+      </div>
+    </form>
+  </ng-container>
+  <div
+    class="vertical-align-content ion-text-center ion-padding"
+    *ngIf="!loaded"
+  >
+    <ion-grid>
+      <ion-row center>
+        <ion-col>
+          <ion-spinner name="crescent" color="primary"></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+

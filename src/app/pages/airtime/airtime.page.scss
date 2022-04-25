@@ -1,0 +1,101 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    .cc {
+      position: relative;
+      font-family: 'Maven Pro', sans-serif;
+      font-size: 16px;
+      color: white;
+      width: 90%;
+      height: 174px;
+      border-radius: 16px;
+      
+      &.visa {
+
+        background-image:url("../../../assets/img/Card.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+        // background: transparent url('../../../assets/img/Card.jpg') 0% 0% no-repeat padding-box;
+        border-radius: 20px;
+        opacity: 1;
+      }
+      
+      &:after {
+        content: '';
+        position: absolute;
+        width: 368px;
+        height: 196px;
+        border-radius: 20px;
+        background: #673BB8 0% 0% no-repeat padding-box;
+        opacity: 1%;
+      }
+     
+      svg {
+        position: absolute;
+        top: 80px;
+        
+        path {
+          fill: transparent;
+          stroke: #FFFFFF;
+          stroke-width: 2px;
+          stroke-linecap: round;
+        }
+      }
+      
+      .container {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        display: flex;
+        // align-items: center;
+        justify-content: space-between;
+      }
+
+      .type{
+          background-color: #FFFFFF;
+          border-radius: 8px;
+      }
+  
+      .holder {
+        position: absolute;
+        // top: 11px;
+        bottom: 10px;
+        left: 25px;
+        
+        span {
+          display: block;
+          
+          &.name {
+            text-align: left;
+font: normal normal 600 16px/19px Montserrat;
+letter-spacing: 1.14px;
+color: #FFFFFF;
+opacity: 1;
+          }
+          
+          &.number {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .ite{
+    --highlight-background: none;
+    --inner-border-width: 0;
+    --border-top-width: 1px;
+    --border-end-width: 1px;
+    --border-bottom-width: 1px;
+    --border-start-width: 1px;
+    --border-width: var(--border-top-width) var(--border-end-width) var(--border-bottom-width) var(--border-start-width);
+    --border-color: #673BB8;
+    --border-radius: 10px;
+}
+
+
+

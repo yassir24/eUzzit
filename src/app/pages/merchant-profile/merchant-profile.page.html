@@ -1,0 +1,209 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" class="fs-10" (click)="close(false)">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Merchant Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="help()">
+        <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding" *ngIf="success">
+    <app-success
+      [header]="successheader"
+      [messages]="successmessages"
+      [coins]="coins"
+    ></app-success>
+  </div>
+
+  <ng-container *ngIf="!success">
+    <ion-card color="tertiary">
+      <!-- <ion-card-header>
+        <ion-card-title class="fs-14"
+          >Activating your merchant account</ion-card-title
+        >
+      </ion-card-header> -->
+      <!-- <ion-card-content class="fs-12">
+        Use the form to register for a merchant account. With your Merchant
+        account, you can sell your products and services to other eUzzit
+        Platforms
+      </ion-card-content> -->
+    </ion-card>
+
+    <!-- <ion-card>
+      <img *ngIf="!fileUrl" src="assets/images/no-image-selected.png" />
+      <img *ngIf="fileUrl" src="{{fileUrl}}" />
+      <ion-card-content>
+        <ion-button color="primary" size="small" (click)="presentUploadOpts()">
+          <ion-icon slot="icon-only" color="light" name="camera"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card> -->
+
+    <form
+      [formGroup]="activateProfileForm"
+      (ngSubmit)="submitCompleteProfile()"
+    >
+      <!-- <ion-item-divider padding>
+        <ion-label>
+          MERCHANT INFORMATION
+        </ion-label>
+      </ion-item-divider> -->
+      <ion-item>
+        <ion-label position="floating">Organization Name</ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.display_name.valid"
+      >
+        <small>Enter your display name.</small>
+      </p>
+
+      <ion-item>
+        <ion-label position="floating"
+          >Is your Organization registered (C.A.C) ?
+          <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          formControlName="registered"
+          (ionChange)="reg($event.target.value)"
+          placeholder="Select One"
+          [ngModel]="registered"
+        >
+          <ion-select-option value="YES">Yes</ion-select-option>
+          <ion-select-option value="NO">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="registered=='YES'">
+        <ion-label position="floating">CAC Registration Number</ion-label>
+        <ion-input
+          [(ngModel)]="cac_reg_no"
+          formControlName="cac_reg_no"
+          type="text"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.registration_number.valid"
+      >
+        <small>Enter your registration number.</small>
+      </p>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.category.valid"
+      >
+        <small>Please enter a Organization category.</small>
+      </p>
+
+      <!-- <ion-item-divider padding>
+        <ion-label>
+          MERCHANT CONTACT DETAILS
+        </ion-label>
+      </ion-item-divider> -->
+
+      <ion-item>
+        <ion-label position="floating"> Address</ion-label>
+        <ion-textarea formControlName="address" rows="2"></ion-textarea>
+      </ion-item>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.address.valid"
+      >
+        <small>Please enter your Address.</small>
+      </p>
+
+      <ion-item>
+        <ion-label position="floating"
+          >Select State <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          placeholder="Select One"
+          (ionChange)="change($event.target.value)"
+          formControlName="city"
+          [ngModel]="city"
+        >
+          <ion-select-option [value]="items.id" *ngFor="let items of states"
+            >{{items.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="submitted && !activateProfileForm.controls.city.valid">
+        <ion-text color="danger" class="form-error">
+          Please choose your State
+        </ion-text>
+      </ion-item>
+
+      <ion-item *ngIf="stateid">
+        <ion-label position="floating"
+          >Select L.G.A <ion-text color="danger">*</ion-text></ion-label
+        >
+        <ion-select
+          (ionChange)="change2($event.target.value)"
+          placeholder="Select One"
+          formControlName="lga_id"
+          [ngModel]="lga_id"
+        >
+          <ion-select-option
+            *ngFor="let items of states[+stateid-1].lgas"
+            [value]="items.id"
+            >{{items.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="submitted && !activateProfileForm.controls.lga_id.valid">
+        <ion-text color="danger" class="form-error">
+          Please choose your L.G.A
+        </ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"> Email</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.email.valid"
+      >
+        <small>Please enter your E-mail.</small>
+      </p>
+
+      <ion-item>
+        <ion-label position="floating"> Phone Number</ion-label>
+        <ion-input
+          type="tel"
+          maxLength="11"
+          formControlName="phone"
+        ></ion-input>
+      </ion-item>
+      <p
+        class="txt-danger"
+        *ngIf="checkerror && !activateProfileForm.controls.phone.valid"
+      >
+        <small>Please enter your Phone number.</small>
+      </p>
+
+      <ion-button
+        block
+        color="primary"
+        type="submit"
+        [disabled]="activateProfileForm.invalid || loading ||(registered=='YES' && !cac_reg_no )"
+      >
+        <ion-spinner name="crescent" *ngIf="loading"></ion-spinner>
+        <i class="fa fa-save"></i> Save Merchant Profile
+      </ion-button>
+      <!-- <ion-button block color="primary" (click)="close(true)">
+        Exit Form
+      </ion-button> -->
+    </form>
+  </ng-container>
+</ion-content>

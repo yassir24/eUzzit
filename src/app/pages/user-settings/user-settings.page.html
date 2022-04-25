@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>User Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+        
+    <ion-item  lines="none">
+      <img style="width: 60px;
+      height: 60px; border: 4px solid #A386D8; border-radius: 50%;" src="assets/img/Ellipse 51.png">
+    <ion-label>
+      <h3 style="margin-left: 10px; font-weight: 600;
+      font-size: 20px;
+      line-height: 30px;
+      text-transform: capitalize;
+      color: #000000;">{{userprofile?.full_name}}</h3> 
+       <p class="stamp" style="margin-left: 10px; color: #000000;">{{userprofile?.type}} account</p>
+    </ion-label>
+    <ion-note (click)="goEditprofile()"><ion-icon name="pencil-outline"></ion-icon></ion-note>
+  </ion-item>
+    <ion-item (click)="goEditprofile()" style="margin-top: 20px;"  lines="none">
+      <img style="width: 22px;
+      height: 22px;" src="assets/img/person.png">
+    <ion-label class="ion-padding">
+      <h3 style="text-align: left;
+      font: normal normal 600 11px/14px monte;
+      letter-spacing: 0.79px;
+      color: #585858;">Update profile</h3> 
+    </ion-label>
+    <ion-note><ion-icon name="arrow-forward-outline"></ion-icon></ion-note>
+  </ion-item>
+    <ion-item (click)="goSetting()" lines="none">
+      <img style="width: 22px;
+      height: 22px;" src="assets/img/settings.png">
+    <ion-label class="ion-padding">
+      <h3 style="text-align: left;
+      font: normal normal 600 11px/14px monte;
+      letter-spacing: 0.79px;
+      color: #585858;">Security settings</h3> 
+    </ion-label>
+    <ion-note><ion-icon name="arrow-forward-outline"></ion-icon></ion-note>
+  </ion-item>
+    <ion-item (click)="goFaq()"  lines="none">
+      <img style="width: 22px;
+      height: 22px;" src="assets/img/question.png">
+    <ion-label class="ion-padding">
+      <h3 style="text-align: left;
+      font: normal normal 600 11px/14px monte;
+      letter-spacing: 0.79px;
+      color: #585858;">FAQ</h3> 
+    </ion-label>
+    <ion-note><ion-icon name="arrow-forward-outline"></ion-icon></ion-note>
+
+  </ion-item>
+    <ion-item (click)="goHelp()"  lines="none">
+      <img style="width: 22px;
+      height: 22px;" src="assets/img/smile.png">
+    <ion-label class="ion-padding">
+      <h3 style="text-align: left;
+      font: normal normal 600 11px/14px monte;
+      letter-spacing: 0.79px;
+      color: #585858;">Send Feedback</h3> 
+    </ion-label>
+    <ion-note><ion-icon name="arrow-forward-outline"></ion-icon></ion-note>
+
+  </ion-item>
+    <ion-item (click)="goHelp()"  lines="none">
+      <img style="width: 22px;
+      height: 22px;" src="assets/img/exclamation.png">
+    <ion-label class="ion-padding">
+      <h3 style="text-align: left;
+      font: normal normal 600 11px/14px monte;
+      letter-spacing: 0.79px;
+      color: #585858;">Help</h3> 
+    </ion-label>
+    <ion-note><ion-icon name="arrow-forward-outline"></ion-icon></ion-note>
+
+  </ion-item>  
+   
+  </ion-list>
+
+</ion-content>

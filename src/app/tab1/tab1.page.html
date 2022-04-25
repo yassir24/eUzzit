@@ -1,0 +1,246 @@
+<ion-header class="ion-no-border" collapse="condense">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: ghostwhite;" autoHide="false">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title style="color: ghostwhite;">Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="top-box ion-no-padding ion-no-margin" style="border-bottom-left-radius: 60% 35px; border-bottom-right-radius: 60% 35px;" no-border>
+   
+    <ion-grid style="text-align: center;">
+      <ion-row>
+        <ion-col>
+          <h5 class="title"> {{ (userprofile?.full_name.length>10)? (userprofile?.full_name | slice:0:10)+'...':(userprofile?.full_name) }}</h5>
+          <p style="margin-top: -15px;" class="stamp">{{userprofile?.type}} Account</p>
+        </ion-col>
+        <ion-col *ngIf="accountdata">
+          <h5 class="title">{{accountdata?.bank_name}} Bank</h5>
+          <p style="margin-top: -15px;" class="stamp">{{accountdata?.account_number}}</p>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+    <ion-searchbar style="margin-bottom: 90px;" color="light"></ion-searchbar>
+  </ion-card>
+  <ion-card class="top-box-2 cont" style="border-radius: 12px;">
+    <div style="margin-left: 20px; margin-top: 10px;">
+      <ion-label style="margin-top: 30px; font: normal normal normal 11px/13px Worksans;
+      letter-spacing: 0.33px;
+      color: #6A6A6A;
+      opacity: 1;"  (click)="showBalToggle()"> <span *ngIf="showballance">Hide</span> <span *ngIf="!showballance">View</span> Balance</ion-label>
+    <ion-button style="margin-top: -5px;" color="light" size="small" (click)="showBalToggle()">
+      <ion-icon *ngIf="!showballance" name="eye-off-outline" style="font-size: 15px;" ></ion-icon>
+      <ion-icon *ngIf="showballance" name="eye-outline" style="font-size: 15px;" ></ion-icon>
+    </ion-button>
+    </div>
+
+    <swiper style="margin-top: -10px;" #swiper [config]="config" (slideChange)="swiperSliderChanged($event)">
+
+      <ng-template swiperSlide> 
+  
+          <div style="width: 100%;" (click)="goMail()" class="cardo">
+            
+              <ion-card style=" --ion-background-color:#E0D9EC; border-radius: 10px; ">
+                <ion-card-header>
+                  <ion-card-subtitle style="text-align: center;
+                  font: normal normal normal 14px/16px Worksans;
+                  letter-spacing: 0.78px;
+                  color: #999999;
+                  opacity: 1;">Main Account</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content *ngIf="showballance" style="text-align: center; margin-top: -20px;
+                font: normal normal bold 25px/29px Worksans;
+                letter-spacing: 0.2px;
+                color: #673BB8;
+                opacity: 1;">
+                  ₦{{userprofile?.user_wallets[2].balance}}
+                </ion-card-content>
+                <ion-card-content *ngIf="!showballance" style="text-align: center; margin-top: -20px;
+                font: normal normal bold 25px/29px Worksans;
+                letter-spacing: 0.63px;
+                color: #673BB8;
+                opacity: 1;">
+                  ₦XXXXX
+                </ion-card-content>
+              </ion-card>
+              
+         
+        </div>
+      
+        
+    
+         </ng-template>
+      <ng-template swiperSlide> 
+       
+          <div style="width: 100%;" (click)="goExtra()" class="cardo">
+            <ion-card style=" --ion-background-color:#E0D9EC; border-radius: 10px;">
+              <ion-card-header>
+                <ion-card-subtitle style="text-align: center; 
+                font: normal normal normal 14px/16px Worksans;
+                letter-spacing: 0.63px;
+                color: #999999;
+                opacity: 1;">Extra Account</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content *ngIf="showballance" style="text-align: center; margin-top: -20px;
+              font: normal normal bold 25px/29px Worksans;
+              letter-spacing: 0.2px;
+              color: #673BB8;
+              opacity: 1;">
+                ₦{{userprofile?.user_wallets[1].balance}}
+              </ion-card-content>
+              <ion-card-content *ngIf="!showballance" style="text-align: center; margin-top: -20px;
+              font: normal normal bold 25px/29px Worksans;
+              letter-spacing: 0.63px;
+              color: #673BB8;
+              opacity: 1;">
+                ₦XXXXX
+              </ion-card-content>
+            </ion-card>
+        </div>
+        
+       
+         </ng-template>
+      <ng-template swiperSlide> 
+        
+   
+          <div style="width: 100%;" class="cardo">
+            
+              <ion-card style=" --ion-background-color:#E0D9EC; border-radius: 10px; ">
+                <ion-card-header>
+                  <ion-card-subtitle style="text-align: center;
+                  font: normal normal normal 14px/16px Worksans;
+                  letter-spacing: 0.78px;
+                  color: #999999;
+                  opacity: 1;">Premium Zit</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content *ngIf="showballance" style="text-align: center; margin-top: -20px;
+                font: normal normal bold 25px/29px Worksans;
+                letter-spacing: 0.2px;
+                color: #673BB8;
+                opacity: 1;">
+                  ₦{{zit?.monthly_premium_zit}}
+                </ion-card-content>
+                <ion-card-content *ngIf="!showballance" style="text-align: center; margin-top: -20px;
+                font: normal normal bold 25px/29px Worksans;
+                letter-spacing: 0.63px;
+                color: #673BB8;
+                opacity: 1;">
+                  ₦XXXXX
+                </ion-card-content>
+              </ion-card>
+              
+         
+        </div>
+          
+        
+      
+      </ng-template>
+      <ng-template swiperSlide> 
+        
+   
+       
+          <div style="width: 100%;" class="cardo">
+            <ion-card style=" --ion-background-color:#E0D9EC; border-radius: 10px;">
+              <ion-card-header>
+                <ion-card-subtitle style="text-align: center; 
+                font: normal normal normal 14px/16px Worksans;
+                letter-spacing: 0.63px;
+                color: #999999;
+                opacity: 1;">ROI</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content *ngIf="showballance" style="text-align: center; margin-top: -20px;
+              font: normal normal bold 25px/29px Worksans;
+              letter-spacing: 0.2px;
+              color: #673BB8;
+              opacity: 1;">
+                ₦{{zit?.monthly_return}}
+              </ion-card-content>
+              <ion-card-content *ngIf="!showballance" style="text-align: center; margin-top: -20px;
+              font: normal normal bold 25px/29px Worksans;
+              letter-spacing: 0.63px;
+              color: #673BB8;
+              opacity: 1;">
+                ₦XXXXX
+              </ion-card-content>
+            </ion-card>
+        </div>
+        
+       
+      </ng-template>
+     
+      </swiper>
+
+  
+
+</ion-card>
+
+
+<div style="margin-top: 20px; margin-left: 20%; margin-right: 20%;" class="sec">
+  <div [routerLink]="['/bill-payments']" style="background: #FFFFFF 0% 0% no-repeat padding-box;" class="cardv">
+    <div class="center">
+      <img style="width: 46px;
+      height: 46px;" src="../../assets/icons/BillPayments.png" alt="">
+      <!-- <ion-icon color="primary" style="font-size: 40px;" name="card-outline"></ion-icon> -->
+    <p style="text-align: center;
+    letter-spacing: 1px;
+    color: #2A2B2E;
+    opacity: 1;">Bill Payments</p>
+    <small style="text-align: center;
+    letter-spacing: 1px;
+    color: #999999;
+    opacity: 1; margin-top: -8px;" >Recharge mobile</small>
+  </div>
+</div>
+  <div [routerLink]="['/merchant']" style="background: #FFFFFF 0% 0% no-repeat padding-box;" class="cardv">
+    <div class="center">
+      <img style="width: 46px;
+      height: 46px;" src="../../assets/icons/Merchants.png" alt="">
+    <p style="text-align: center;
+    letter-spacing: 1px;
+    color: #2A2B2E;
+    opacity: 1;">Merchants</p>
+    <small style="text-align: center;
+    letter-spacing: 1px;
+    color: #999999;
+    opacity: 1; margin-top: -8px;" >favorite products</small>
+  </div>
+</div>
+
+</div>
+<div class="sec ion-paddind" style="margin-top: 10px;">
+  <div [routerLink]="['/send-money']" style="background: #FFFFFF 0% 0% no-repeat padding-box;" class="cardv">
+    <div class="center">
+      <img style="width: 46px;
+      height: 46px;" src="../../assets/icons/SendMoney.png" alt="">
+    <p style="text-align: center;
+    letter-spacing: 1px;
+    color: #2A2B2E;
+    opacity: 1;">Send Money</p>
+    <small style="text-align: center;
+    letter-spacing: 1px;
+    color: #999999;
+    opacity: 1; margin-top: -8px;" >Send to account</small>
+  </div>
+</div>
+  <div [routerLink]="['/fund-wallet']" style="background: #FFFFFF 0% 0% no-repeat padding-box;" class="cardv">
+    <div class="center">
+      <img style="width: 46px;
+      height: 46px;" src="../../assets/icons/FundWallet.png" alt="">
+    <p style="text-align: center;
+    letter-spacing: 1px;
+    color: #2A2B2E;
+    opacity: 1;">Fund Account</p>
+    <small style="text-align: center;
+    letter-spacing: 1px;
+    color: #999999;
+    opacity: 1; margin-top: -8px;" >Deposit & do more</small>
+  </div>
+</div>
+
+</div>
+
+ 
+</ion-content>

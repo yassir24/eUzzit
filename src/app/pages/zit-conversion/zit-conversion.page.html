@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Zit Conversion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="centerx">
+    <p style="color: #673BB8">Investment I Loan I Insurance I Allowance</p>
+  </div>
+
+  <ion-list>
+   
+   
+
+
+    <ion-card [routerLink]="['/zit-booster']" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="../../../assets/icons/Zit reward.png" />
+            </ion-thumbnail>
+      <ion-label>
+        <h3 >Zit Reward</h3>
+              <p style="color: black;">Top-up your zit with ease</p>
+
+<p style="text-align: left; color: black; font-size: 15px; font-weight: bolder;
+letter-spacing: 1px;
+
+opacity: 1;" class="fs-22" [innerHTML]="coin?.toLocaleString('en-US') + 'Zit'"></p>
+             
+            </ion-label>
+    </ion-item>
+  </ion-card>
+    <ion-card (click)="open(x.name)" *ngFor="let x of euzzitextras" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="../../../assets/icons/{{x.name}}.png" />
+      </ion-thumbnail>
+      <ion-label><h3>{{x.name}}</h3>
+              <p style="color: black; font-size: 15px; font-weight: bolder;">&#8358;{{x.benefit}}</p>
+            </ion-label>
+    </ion-item>
+  </ion-card>
+    <!-- <ion-card style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="../../../assets/icons/mortgage-loan.png" />
+      </ion-thumbnail>
+      <ion-label><h3>Loan Access</h3>
+              <p>Access to monthly pension</p>
+            </ion-label>
+    </ion-item>
+  </ion-card> -->
+    <!-- <ion-card style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="../../../assets/icons/clipboard.png" />
+      </ion-thumbnail>
+      <ion-label><h3>Insurance</h3>
+              <p>Insurance made easy</p>
+            </ion-label>
+    </ion-item>
+  </ion-card> -->
+ 
+   
+  </ion-list>
+  
+</ion-content>

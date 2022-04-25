@@ -1,0 +1,62 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon size="large" style="color: aliceblue;" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Select Biller</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item  *ngFor="let network of airtimeData" color='medium' class="ion-padding"  (click)="changeTitle(network.name, network.id, network.category_type)">
+      <ion-thumbnail slot="start">
+        <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+        height: 37px;" src="assets/img/{{network.category_type}}.png" />
+      </ion-thumbnail>
+      <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">{{network.name}}</ion-label>
+    </ion-item>
+    <!-- <ion-item color='medium' class="ion-padding">
+      <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">GOtv</ion-label>
+    </ion-item>
+    <ion-item color='medium' class="ion-padding">
+      <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">Iron TV</ion-label>
+    </ion-item>
+    <ion-item color='medium' class="ion-padding">
+      <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">Linda ikeji TV</ion-label>
+    </ion-item>
+    <ion-item color='medium' class="ion-padding">
+      <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">Cable Africa</ion-label>
+    </ion-item> -->
+    
+   
+    <!-- <section class="ion-padding">
+      
+      <ion-button color="primary" size="large" fill="solid" expand="block">Choose Wallet</ion-button>
+    </section>-->
+
+</ion-content>
+
+<ion-footer>
+  <section class="ion-padding">
+      
+    <ion-button (click)="closeModal()" color="primary" size="large" fill="outline" expand="block">Cancel</ion-button>
+  </section>
+</ion-footer>
+

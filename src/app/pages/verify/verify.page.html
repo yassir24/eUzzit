@@ -1,0 +1,40 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>verify</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+<div class="centerx">
+   <h1 style="font: normal normal bold 24px/28px Worksans;
+  letter-spacing: 0px;
+  color: #393F45;
+  opacity: 1;">Check your email</h1>
+  <p>We've sent the code to your email address</p>
+
+  <img style="width: 156px; margin-top: 39px;
+  height: 133px;" src="../../../assets/icons/Password reset.png" alt="">
+</div>
+
+<div class="centerx">
+  <ng-otp-input style="margin-top: 56px;"  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+
+</div>
+ 
+
+<div style="margin-top: 40px;" class="centerx">
+  <p>Code expires in : <span style="font: normal normal normal 12px/14px Worksans;
+    letter-spacing: 0px;
+    color: #FF7600;">00 : 56</span> </p>
+  <p>Didn’t receive code? <span style="text-decoration: underline;
+    font: normal normal normal 14px/16px Worksans;
+    letter-spacing: 0px;
+    color: #FF7600;">Resend Code</span></p>
+</div>
+
+<section style="margin-top: 158px;" class="ion-padding">
+      
+  <ion-button [routerLink]="['/']" color="primary" size="large" fill="solid" expand="block">Verify</ion-button>
+</section>
+
+</ion-content>

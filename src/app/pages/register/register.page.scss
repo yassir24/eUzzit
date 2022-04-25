@@ -1,0 +1,30 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin-top: 10%;
+  }
+.centerx {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ion-item{
+    --highlight-background: none;
+    --inner-border-width: 0;
+    
+    // --border-width: var(--border-top-width) var(--border-end-width) var(--border-bottom-width) var(--border-start-width);
+    // --border-color: #FF38AD;
+    --border-radius: 10px;
+    --min-height: 40px !important;
+}
+
+.terms-condition {
+  display: flex;
+  align-items: center;
+}
+
+.terms-condition input {
+  margin-right: 10px;
+}

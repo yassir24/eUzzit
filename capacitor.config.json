@@ -1,0 +1,6 @@
+{
+	"appId": "com.euzzit.ios",
+	"appName": "eUzzit",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

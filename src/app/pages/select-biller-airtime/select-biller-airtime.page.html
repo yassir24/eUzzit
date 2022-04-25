@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Biller</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item  *ngFor="let cabletv of cabletvs" (click)="selectProvider(cabletv)" color='medium' class="ion-padding">
+    <ion-thumbnail slot="start">
+      <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+      height: 37px;" src="assets/img/{{cabletv.category_type}}.png" />
+    </ion-thumbnail>
+    <ion-label style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;">{{cabletv.name}}</ion-label>
+  </ion-item>
+
+</ion-content>
+<ion-footer>
+  <section class="ion-padding">
+      
+    <ion-button (click)="closeModal()" color="primary" size="large" fill="outline" expand="block">Cancel</ion-button>
+  </section>
+</ion-footer>

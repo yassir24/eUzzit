@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Loan History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item style=" --border-top-width: 0px;
+  --border-end-width: 0px;
+  --border-bottom-width: 0px;
+  --border-start-width: 0px;">
+    <ion-button slot="end" color="primary">View Full loan history</ion-button>
+
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Loan Disbursed</ion-label>
+  <ion-item style="--ion-background-color:#49B83B;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+       N30,000.00</ion-label>
+      
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Loan Date</ion-label>
+  <ion-item style="--ion-background-color:#ff9797;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+      30th March 2022</ion-label>
+      <ion-note><ion-button color="success">Active</ion-button></ion-note>
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Wallet</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+      Main</ion-label>
+      
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Status</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+      Pending</ion-label>
+      
+  </ion-item>
+   
+
+  <section class="ion-padding">
+    
+    <ion-button (click)="accessLoan()" color="primary" size="large" fill="solid" expand="block"> <ion-label *ngIf="buyingzit">Buying Zit</ion-label> <ion-label *ngIf="!buyingzit">Pay loan</ion-label>
+    </ion-button>
+  </section>
+  
+</ion-content>
+
+
+
+
+ 

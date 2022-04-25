@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Loan History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <h3 style="text-align: left; margin-left: 20px;
+      font: normal normal normal 15px/23px Poppins;
+      letter-spacing: 0.42px;
+      color: #5A5A5A;
+      opacity: 1;">
+      Loan History
+      </h3>
+    
+      </div>
+    
+      <ion-list style="margin-top: -10px;">
+        <ion-card *ngFor="let item of res" style="background: #FFFFFF 0% 0% no-repeat;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 20px;
+        ">
+        <ion-item lines="none">
+          
+          <ion-label class="ion-text-wrap">
+            <h3 style="text-align: left;
+           
+            letter-spacing: 1px;
+            color: #000000;
+            opacity: 1;">Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.date_created | date}}</h3>
+                  <p style="text-align: left;
+                  letter-spacing: 1px;
+                  color: #000000;
+                  opacity: 1;">Loan Amount:&nbsp;&nbsp;&nbsp;&nbsp;₦{{item.loan_amount | number}}</p>
+                   <h6 class="txt6 pdt-2"> Loan ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.loan_id}}</h6>
+                   <h6 class="txt6 pdt-2"> Loan Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span *ngIf="item.status === 1">Active</span>  <span *ngIf="item.status === 2">Paid</span>  <span *ngIf="item.status === 0">Defaulted</span> </h6>
+                   <h6 class="txt6 pdt-2"> Loan Tenure:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.loan_tenure}} Days</h6>
+                </ion-label>
+                <ion-note
+              slot="end"
+              [class]="item.type=='deposit'? 'txt-success fw-600 fs-17' : 'txt-danger fw-600 fs-17'"
+              [id]="item.type"
+            >
+            <ion-icon (click)="downloadPDR(item)" name="cloud-download-outline"></ion-icon></ion-note>
+        </ion-item>
+      </ion-card>
+      </ion-list>
+
+</ion-content>

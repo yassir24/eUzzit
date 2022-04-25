@@ -1,0 +1,203 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+ 
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <div class="center">
+    <h1 style="font: normal normal bold 28px/30px Worksans;
+    letter-spacing: 0px;
+    color: #393F45;
+    opacity: 1;">Signup</h1>
+  </div>
+
+  <form
+  class=""
+  [formGroup]="signUpForm"
+  (submit)="signUpUser()"
+  novalidate
+>
+
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="first_name"
+    type="text" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="First name">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" src="assets/icons/profile.svg"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <p
+          class="txt-danger"
+          *ngIf="checkerror && !signUpForm.controls.first_name.valid"
+        >
+          <small>Please enter your first name.</small>
+        </p>
+
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="last_name"
+    type="text" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Last name">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" src="assets/icons/profile.svg"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <p
+  class="txt-danger"
+  *ngIf="checkerror && !signUpForm.controls.last_name.valid"
+>
+  <small>Please enter your last name.</small>
+</p>
+
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="phone"
+    type="tel"
+    maxLength="11" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Phone">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="call-outline"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <p
+  class="txt-danger"
+  *ngIf="checkerror && !signUpForm.controls.phone.valid"
+>
+  <small>Please enter a working Phone Number.</small>
+</p>
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="username"
+    type="text" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Username">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="at-outline"></ion-icon>
+    </ion-input>
+  </ion-item>
+
+  <p
+  class="txt-danger"
+  *ngIf="checkerror && !signUpForm.controls.username.valid"
+>
+  <small>Please enter a valid username.</small>
+</p>
+
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="email"
+    type="email" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Email">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="mail-outline"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <p
+  class="txt-danger"
+  *ngIf="checkerror && !signUpForm.controls.email.valid"
+>
+  <small>Please enter a valid email.</small>
+</p>
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="password"
+    [type]="showPassword ? 'password' : 'text'"
+    class="fs-13"
+    minlength="6" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Password">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="lock-closed-outline"></ion-icon>
+    </ion-input>
+    <ion-icon color="dark"
+    [name]="showPassword?'eye-off':'eye'"
+    item-right
+    (click)="showPassword=!showPassword;"
+    showPassword="true"
+  ></ion-icon>
+  </ion-item>
+  <p
+          class="txt-danger"
+          *ngIf="checkerror && !signUpForm.controls.password.valid"
+        >
+          <small> Please enter a Password. </small>
+        </p>
+  <ion-item color='medium' class="ion-padding">
+    <ion-input  formControlName="password_confirmation"
+    minlength="6"
+    [type]="showPassword ? 'password' : 'text'" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Confirm Password">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="lock-closed-outline"></ion-icon>
+    </ion-input>
+    <ion-icon color="dark"
+    [name]="showPassword?'eye-off':'eye'"
+    item-right
+    (click)="showPassword=!showPassword;"
+    showPassword="true"
+  ></ion-icon>
+  </ion-item>
+  <p
+          class="txt-danger"
+          *ngIf="checkerror && !signUpForm.controls.password_confirmation.valid"
+        >
+          <small>Please Confirm Your Password.</small>
+        </p>
+
+  <ion-item color='medium' class="ion-padding">
+    <ion-input  formControlName="referral_code"
+    maxlength="11"
+    type="tel"
+    inputmode="tel" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;" placeholder="Invite code (optional)">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="qr-code-outline"></ion-icon>
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="ion-padding">
+  <ion-label class="terms-condition ion-text-wrap">
+    <input (click)="checkbox()" type="checkbox" />
+    <p
+      style="font-size: xx-small; display: inline;"
+      class="txt-secondary"
+      style="font-size: 18px !important;"
+    >
+      I've read and agreed to the
+      <a (click)="terms()">Terms and Conditions.</a>
+    </p>
+  </ion-label>
+</ion-item>
+  <!-- <div class="centerx">
+    <p>Forgot Account? / Reset</p>
+  </div> -->
+
+  <section class="ion-padding">
+      
+    <ion-button  [disabled]="submitted || !signUpForm.valid || !check"
+    type="submit" [routerLink]="['/verify']" color="primary" size="large" fill="solid" expand="block">
+
+    <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+          <ion-label *ngIf="submitted">Please Wait!</ion-label>
+    
+    Signup</ion-button>
+  </section>
+
+</form>
+
+  <div class="centerx">
+    <p>Already have an account?  <span (click)="openLogin()" style="text-align: center;
+      font: normal normal 600 14px/16px Worksans;
+      letter-spacing: 0px;
+      color: #FF7600;">Sign In</span></p>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,154 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons *ngIf="!success" slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Upgrade to Premium</ion-title>
+    <ion-buttons slot="end" *ngIf="!success">
+      <div [ngSwitch]="upgrademethod">
+        <ion-button (click)="help()" *ngSwitchCase="'walletupgrade'">
+          <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button (click)="help()" *ngSwitchCase="'lifelineupgrade'">
+          <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="!success" fill="solid" color="primary">
+    <ion-segment color="light">
+      <ion-segment-button
+        value="walletupgrade"
+        (ionSelect)="segmentButtonClicked('walletupgrade')"
+        checked
+      >
+        <ion-label>Use Wallet</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        value="lifelineupgrade"
+        (ionSelect)="segmentButtonClicked('lifelineupgrade')"
+      >
+        <ion-label>Use Lifeline</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-content fullscreen class="ion-padding">
+    <div class="ion-padding" *ngIf="success">
+      <app-success
+        [header]="successheader"
+        [coins]="coins"
+        [messages]="successmessages"
+      >
+      </app-success>
+    </div>
+
+    <ng-container class="ion-padding">
+      <div [ngSwitch]="upgrademethod">
+        <form
+          [formGroup]="upgradeAccountForm"
+          (ngSubmit)="onUpgradeAccount()"
+          *ngSwitchCase="'walletupgrade'"
+        >
+          <ion-item style="margin-bottom: 15px;">
+            <ion-label position="floating"
+              >Choose Wallet <ion-text color="danger">*</ion-text></ion-label
+            >
+            <ion-select
+              formControlName="wallet"
+              [interfaceOptions]="walletActionSheetOptions"
+              interface="action-sheet"
+            >
+              <ion-select-option
+                *ngFor="let account of wallets"
+                value="{{account.slug}}"
+                [innerHTML]="account.name + ' : &#8358;' + abs(account.balance)"
+              ></ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Enter Premium Code</ion-label>
+            <ion-input
+              type="tel"
+              maxlength="11"
+              formControlName="referrer_code"
+            ></ion-input>
+            <ion-icon name="contact" slot="end" (click)="expression"></ion-icon>
+          </ion-item>
+          <ion-label>
+            <p size="small" class="ion-text-center pd-20">
+              Leave blank if you don't have an invite Premium Code
+            </p>
+          </ion-label>
+
+          <!-- <ion-label >
+            <input formControlName="accept" type="checkbox" />
+            <p  style="font-size: xx-small; display:inline" class="txt-secondary">
+              By clicking on the activation button means you've agreed to our
+              <a (click)="terms()" >Terms and Condition.</a>
+            </p>
+          </ion-label> -->
+
+          <div
+            class="pd-20 txt-center"
+            class="ion-text-center"
+            style="margin-top: 15px;"
+          >
+            <ion-button
+              color="primary"
+              expand="block"
+              type="submit"
+              [disabled]="upgradeAccountForm.invalid || submitted"
+            >
+              <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+              <ion-label *ngIf="submitted">Please Wait!</ion-label>
+              <ion-label *ngIf="!submitted"> UPGRADE </ion-label>
+            </ion-button>
+          </div>
+        </form>
+
+        <form
+          [formGroup]="upgradeAccountLifelineForm"
+          (ngSubmit)="onUpgradeLifelineAccount()"
+          *ngSwitchCase="'lifelineupgrade'"
+        >
+          <ion-item>
+            <ion-label position="floating">Enter Lifeline Code</ion-label>
+            <ion-input
+              required
+              formControlName="lifeline"
+              type="text"
+            ></ion-input>
+            <ion-icon name="contact" slot="end" (click)="expression"></ion-icon>
+          </ion-item>
+
+          <!-- <ion-label >
+          <input formControlName="accept" type="checkbox" />
+          <p  style="font-size: xx-small; display:inline" class="txt-secondary">
+            By clicking on the activation button means you've agreed to our
+            <a (click)="terms()" >Terms and Condition.</a>
+          </p>
+        </ion-label> -->
+
+          <div
+            class="pd-20 txt-center"
+            class="ion-text-center"
+            style="margin-top: 15px;"
+          >
+            <ion-button
+              color="primary"
+              expand="block"
+              type="submit"
+              [disabled]="upgradeAccountLifelineForm.invalid || submitted"
+            >
+              <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+              <ion-label *ngIf="submitted">Please Wait!</ion-label>
+              <ion-label *ngIf="!submitted"> UPGRADE </ion-label>
+            </ion-button>
+          </div>
+        </form>
+      </div>
+    </ng-container>
+  </ion-content>
+</ion-header>

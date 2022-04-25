@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Merchant Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="!userinfo?.merchant_profile" (click)="goMerchantprofile()" class="ion-padding item">
+    <ion-label style="font: poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+       Create Merchant Profile</ion-label>
+  </ion-item>
+  <ion-item *ngIf="userinfo?.merchant_profile" (click)="goServices()" class="ion-padding item">
+    <ion-label style="font: poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+       Create and View Services</ion-label>
+  </ion-item>
+
+  <ion-item (click)="goSetreward()" class="ion-padding item">
+    <ion-label style="font: poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+       Set Reward (%)</ion-label>
+      
+  </ion-item>
+
+</ion-content>

@@ -1,0 +1,169 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button size="small"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Merchant Services</ion-title>
+    <ion-buttons slot="end">
+      <div [ngSwitch]="upgrademethod">
+        <ion-button (click)="help()" *ngSwitchCase="'walletupgrade'">
+          <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button (click)="help()" *ngSwitchCase="'lifelineupgrade'">
+          <ion-icon name="help-circle-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="!success" fill="solid" color="primary">
+    <ion-segment color="light">
+      <ion-segment-button
+        value="lifelinecodes"
+        (ionSelect)="segmentButtonClicked('lifelinecodes')"
+        checked
+      >
+        <ion-label>View Services</ion-label>
+      </ion-segment-button>
+      <ion-segment-button
+        value="generate"
+        (ionSelect)="segmentButtonClicked('generate')"
+      >
+        <ion-label>Create Services</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-margin no-padding>
+  <app-success
+    *ngIf="success"
+    [header]="successheader"
+    [coins]="coins"
+    [messages]="successmessages"
+  >
+  </app-success>
+
+  <ng-container *ngIf="!success" class="ion-padding">
+    <div [ngSwitch]="upgrademethod">
+      <div *ngSwitchCase="'lifelinecodes'">
+        <br /><br /><br />
+        <ion-card class="top-box-2" padding no-margin>
+          <ion-card-title class="fs-15" color="medium">
+            <h3>List of Services</h3>
+          </ion-card-title>
+        </ion-card>
+
+        <div
+          class="ion-padding ion-text-center"
+          color="primary"
+          *ngIf="lifelines < 1"
+        >
+          <h2 style="color: var(--ion-color-primary);">
+            You don't have any service
+          </h2>
+        </div>
+
+        <ion-grid class="ion-padding" *ngIf="lifelines > 0">
+          <ion-row>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">Row limit </ion-label>
+                <ion-select
+                  [value]="limit"
+                  name="limit"
+                  interface="action-sheet"
+                >
+                  <ion-select-option value="10" selected="true"
+                    >10</ion-select-option
+                  >
+                  <ion-select-option value="50">50</ion-select-option>
+                  <ion-select-option value="100">100</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="floating">Search</ion-label>
+                <ion-input
+                  [(ngModel)]="search"
+                  name="search"
+                  (keyup)="filterDatatable($event)"
+                  type="search"
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="ion-padding" *ngIf="lifelines > 0">
+          <ngx-datatable
+            [rows]="rows"
+            class="bootstrap"
+            [loadingIndicator]="loadingIndicator"
+            [columnMode]="'standard'"
+            [headerHeight]="50"
+            [limit]="limit"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [columns]="columns"
+            [reorderable]="reorderable"
+            [sortType]="'multi'"
+            [scrollbarH]="true"
+          >
+            <ngx-datatable-column name="S No.">
+              <ng-template
+                ngx-datatable-cell-template
+                let-rowIndex="rowIndex"
+                let-row="row"
+              >
+                {{rowIndex+1}}
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column
+              *ngFor="let column of columns; let i = index;"
+              name="{{column.name}}"
+              prop="{{column.prop}}"
+            >
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+
+    <div [ngSwitch]="upgrademethod">
+      <div *ngSwitchCase="'generate'">
+        <br /><br />
+        <ion-item>
+          <ion-label position="floating"
+            >Service Name<ion-text color="danger">*</ion-text></ion-label
+          >
+          <ion-input
+            [(ngModel)]="lifelinecodeno"
+            required
+            type="no"
+          ></ion-input>
+        </ion-item>
+
+        <div
+          class="pd-20 txt-center"
+          class="ion-text-center"
+          style="margin-top: 30px;"
+        >
+          <ion-button
+            [disabled]="!lifelinecodeno"
+            color="primary"
+            expand="block"
+            type="submit"
+            (click)="generate()"
+          >
+            <ion-spinner *ngIf="submitted" name="crescent"></ion-spinner>
+            <ion-label *ngIf="submitted">Please Wait!</ion-label>
+            <ion-label *ngIf="!submitted">
+              Create Service
+            </ion-label>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>

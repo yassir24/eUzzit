@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Insurance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div style=" width: 100%;" class="bg">
+  <!-- <ion-item color='primary' class="ion-padding">
+    <ion-label class="ion-text-wrap">
+     
+      <small style="
+      letter-spacing: 0px;
+      color: #FFFFFF;
+      opacity: 1;">You are qualified to access loan based on the number of zit aquired and it takes less than 10 seconds to access a loan</small>
+    </ion-label>
+    </ion-item> -->
+    <!-- <br>
+      <ion-button>
+        200,000
+      </ion-button> -->
+
+    <!-- <ion-item class="ion-padding">
+      <ion-label style="text-align: left;
+        font: normal normal normal 16px/18px Worksans;
+        letter-spacing: 0px;
+        color: #000000;">
+         {{boostedzit | number}}</ion-label>
+         <ion-note>
+          <ion-icon name="arrow-down-outline"></ion-icon>
+         </ion-note>
+    </ion-item> -->
+ </div>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Classic account loan limit</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="text-align: center;
+    font: normal normal bold 26px/39px Poppins;
+    letter-spacing: 1.44px;
+    color: #673BB8;">
+       &#8358;1,000-&#8358;50,000</ion-label>
+      
+  </ion-item>
+   
+  <ion-label style="margin-top: -10px;" class="ion-padding" position="stacked">Premium account loan limit</ion-label>
+  <ion-item class="ion-padding">
+    <ion-label style="text-align: center;
+    font: normal normal bold 16px/29px poppins;
+    letter-spacing: 1.44px;
+    color: #673BB8;">&#8358;5,000-&#8358;12,500,000</ion-label>
+  </ion-item>
+
+  <section class="ion-padding">
+    
+    <ion-button (click)="accessLoan()" color="primary" size="large" fill="solid" expand="block"> <ion-label *ngIf="buyingzit">Buying Zit</ion-label> <ion-label *ngIf="!buyingzit">Access Insurance</ion-label></ion-button>
+  </section>
+  
+</ion-content>
+
+
+
+ 

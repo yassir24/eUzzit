@@ -1,0 +1,17 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar>
+    <ion-title>Fund Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <iframe
+    [src]="externalLink"
+    width="100%"
+    height="100%"
+    frameborder="0"
+  ></iframe>
+</ion-content>

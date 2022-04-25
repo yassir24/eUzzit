@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Airtime</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section (click)="pickContact()" class="ion-padding">
+    <ion-button expand="block" fill="outline">
+    <ion-input 
+    type="text"
+    value="My contact list" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #673BB8;" readonly>
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="person-outline"></ion-icon>
+    </ion-input>
+  </ion-button>
+  </section>
+  <ion-item style="margin-top: 10px;" (click)="selectBiller()">
+    <ion-thumbnail *ngIf="cat !=''" slot="start">
+      <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+      height: 37px;" src="assets/img/{{cat}}.png" />
+    </ion-thumbnail>
+    <ion-label color="primary">{{pageTitle}}</ion-label>
+    <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+  </ion-item>
+
+  <form [formGroup]="buyAirtimeForm" (ngSubmit)="buyAirtime()">
+    
+    <ion-item>
+      <ion-label  color="primary" position="floating">Phone Number</ion-label>
+      <ion-input  required
+      *ngIf="(userinfo | async) as user;"
+      formControlName="phone_no"
+      [(ngModel)]="user.phone"
+      type="tel"
+      inputmode="tel"
+      maxlength="11" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" placeholder="Enter phone number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" position="floating">Amount</ion-label>
+
+      <ion-input  required
+      formControlName="amount"
+      type="number" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" placeholder="Amount"></ion-input>
+    </ion-item>
+ 
+
+    <section class="ion-padding">
+      
+      <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+    </section>
+   
+      <section class="ion-padding">
+
+        <ion-button
+            color="primary"
+            expand="block"
+            size="large"
+            fill="outline"
+            type="submit"
+            [disabled]="buyAirtimeForm.invalid"
+          >
+            <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+            <ion-label *ngIf="submitted">Please Wait&hellip;</ion-label>
+            <ion-label *ngIf="!submitted">Confirm</ion-label>
+          </ion-button>
+      
+        <!-- <ion-button (click)="confirmModal()" color="primary" size="large" fill="outline" expand="block">Confirm</ion-button> -->
+      </section>
+
+    </form>
+
+</ion-content>

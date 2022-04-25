@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Send to Bank</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="sendMoneyForm" (ngSubmit)="validateSend()">
+  <!-- <ion-label style="margin-top: -10px;" color="primary" class="ion-padding" position="stacked">Select Bank</ion-label> -->
+  <ion-item (click)="presentModal('Message')">
+    <ion-thumbnail *ngIf="bankcode" slot="start">
+      <img style="border-radius: 9px; width: 43px; margin-top: 10px; object-fit: cover;
+      height: 37px;" src="assets/img/{{bankcode}}.png" />
+    </ion-thumbnail>
+    <ion-label color="primary">{{bank}}</ion-label>
+     <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" position="floating">Account Number</ion-label>
+
+    <ion-input  required
+    formControlName="account_no"
+    type="text"
+    maxlength="10"
+    (ionChange)="loadAccountName()"
+    maxlength="10"
+    inputmode="numeric" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" type="number"></ion-input>
+  </ion-item>
+
+    <ion-item  *ngIf="accountnamevalid">
+      <ion-label *ngIf="accountnamevalid" color="primary" position="floating">Account Name</ion-label>
+      <ion-input required
+      formControlName="account_name"
+      readonly
+      type="text" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Amount</ion-label>
+
+      <ion-input  required
+      formControlName="amount"
+      type="number" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" position="floating">Narration</ion-label>
+
+      <ion-input style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" type="text" placeholder="Narration"></ion-input>
+    </ion-item>
+    <section class="ion-padding">
+      
+      <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+    </section>
+   
+      <section class="ion-padding">
+      
+        <ion-button [disabled]="sendMoneyForm.invalid" type="submit" color="primary" size="large" fill="outline" expand="block">
+          <ion-spinner name="crescent" *ngIf="submitSend"></ion-spinner>
+          <ion-label *ngIf="submitSend">Please Wait&hellip;</ion-label>
+          <ion-label *ngIf="!submitSend">Confirm</ion-label>
+          </ion-button>
+      </section>
+      </form>
+</ion-content>
+

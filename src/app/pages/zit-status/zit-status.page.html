@@ -1,0 +1,104 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" class="fs-12"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{status}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="loan-access-content">
+  <ion-icon name="logo-I'm working" style="color: red;" size="large"></ion-icon>
+
+  <!-- This is for the Loan page -->
+  <ng-container *ngIf="status=='Loan Access'; else null">
+    <p class="write-up ion-padding">
+      You are qualified to access loan based on the number of Zit acquired and
+      it takes less "than" 10 seconds to collect loan
+    </p>
+
+    <div class="loan-limit-cards ion-padding">
+      <div class="loan-limit-card">
+        <p class="loan-limit-card-title">Classic account loan limit</p>
+        <p class="loan-limit-card-price">&#8358; 1,000 - &#8358; 25,000</p>
+      </div>
+
+      <div class="loan-limit-card">
+        <p class="loan-limit-card-title">Premium account loan limit</p>
+        <p class="loan-limit-card-price">&#8358; 4,000 - &#8358; 10,000,000</p>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- this is for the Life insurance page -->
+  <ng-container *ngIf="status=='Insurance'; else null">
+    <p class="write-up ion-padding">
+      Your next-of-kin is qualified to claim your insurance cover based on the
+      number of Zit you've acquired
+    </p>
+
+    <div class="loan-limit-cards ion-padding">
+      <div class="loan-limit-card">
+        <p class="loan-limit-card-title">Classic account insurance limit</p>
+        <p class="loan-limit-card-price">&#8358; 1,000 - &#8358; 50,000</p>
+      </div>
+
+      <div class="loan-limit-card">
+        <p class="loan-limit-card-title">Premium account insurance limit</p>
+        <p class="loan-limit-card-price">
+          &#8358; 5,000 - &#8358; 12,500,000
+        </p>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- This is for the Pension allowance page -->
+  <ng-container *ngIf="status=='Monthly Pension Allowance'; else null">
+    <p class="write-up ion-padding">
+      You're qualified to access free Pension Plan known as eUzzit Monthly
+      Allowance for 20 years based on the number of Zit you've accumulated.
+    </p>
+
+    <div class="pension-prices ion-padding">
+      <p class="header">View below Zit target and monthly payment</p>
+
+      <div class="cards">
+        <div class="card">
+          <p class="price-zit">100,000,000 Zit</p>
+          <p class="price-naira">&#8358; 10,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">300,000,000 Zit</p>
+          <p class="price-naira">&#8358; 30,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">500,000,000 Zit</p>
+          <p class="price-naira">&#8358; 50,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">700,000,000 Zit</p>
+          <p class="price-naira">&#8358; 70,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">900,000,000 Zit</p>
+          <p class="price-naira">&#8358; 90,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">1,000,000,000 Zit</p>
+          <p class="price-naira">&#8358; 100,000</p>
+        </div>
+
+        <div class="card">
+          <p class="price-zit">2,000,000,000 Zit</p>
+          <p class="price-naira">&#8358; 200,000</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ion-content>

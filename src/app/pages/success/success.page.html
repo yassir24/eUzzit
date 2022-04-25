@@ -1,0 +1,62 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>success</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content color="primary">
+
+  <ion-card style="border-radius: 49px; margin-top: 50px; margin-left: 33px; margin-right: 33px;" color="light">
+  <ion-card-content>
+    <div class="ion-text-center">
+      <img style="width: 155px;
+      height: 152px;" src="assets/icons/group-46.png" alt="">
+      <h1 style="text-align: center;
+      font: normal normal 600 31px/47px poppins;
+      letter-spacing: 1.24px;
+      color: #764EBF;
+      opacity: 1;">Success</h1>
+    </div>
+
+    
+  </ion-card-content>
+
+
+    <div style="text-align: center;
+   " class="centerx">
+      <p style="
+      color: #83828A;
+      opacity: 1;">{{message}}</p>
+
+<p style="font: poppins;
+
+color: #83828A;
+opacity: 1;">{{date | date: 'longDate'}}</p>
+ <div class="ion-text-center">
+  <ion-icon color="primary" style="width: 45px;
+  height: 45px;" src="assets/icons/coins.svg" alt=""></ion-icon>
+ 
+</div>
+
+<p style="font: poppins;
+
+color: #83828A;
+opacity: 1;">{{coins}}</p>
+    </div>
+
+   
+ 
+
+  <ion-grid class="ion-padding">
+    <ion-row style="text-align: center;">
+     
+      <ion-col>
+        <div><ion-button (click)="shareTransaction()" color="primary" fill="solid" expand="block">Share</ion-button></div>
+      </ion-col>
+      <ion-col>
+        <div><ion-button (click)="closeModal()" color="primary" fill="solid" expand="block">Done</ion-button></div>
+      </ion-col>
+    </ion-row></ion-grid>
+  </ion-card>
+
+</ion-content>

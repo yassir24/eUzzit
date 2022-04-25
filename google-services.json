@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "195312578519",
+    "firebase_url": "https://euzzit-inapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "euzzit-inapp",
+    "storage_bucket": "euzzit-inapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195312578519:android:6cb48a6f3dced1e5db6592",
+        "android_client_info": {
+          "package_name": "com.euzzit.wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195312578519-f56258f0o4e723qbojngv7fnj8qbeph3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjCtCdNqhXsbIsbKYjlxTxmcNlr2LMBQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195312578519-f56258f0o4e723qbojngv7fnj8qbeph3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

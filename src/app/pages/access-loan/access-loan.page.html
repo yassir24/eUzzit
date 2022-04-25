@@ -1,0 +1,231 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Access loan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <div><ion-button  style="--background:#E0D9EC;" fill="none" expand="block"> <ion-label style="font: normal normal bold 26px/39px poppins;
+          letter-spacing: 1.44px;
+          color: #673BB8;
+          opacity: 1;">₦{{euzzitextras|number}}</ion-label> </ion-button></div>
+      </ion-col>
+      <ion-col>
+        <div><ion-button color="medium"  fill="outline" expand="block"> 
+          <ul style="text-align: left;"><li> <ion-label color="dark"> <small>Interest rate</small></ion-label></li> <li> <ion-label color="primary"> {{res?.rate}}% <small> Loan Tenure</small>   </ion-label></li> </ul>
+        </ion-button></div>
+      </ion-col>
+    </ion-row></ion-grid>
+    <ion-grid>
+      <ion-row style="text-align: center;">
+        <ion-col>
+          <ion-label style="font: normal normal medium 9px/13px poppins;
+          letter-spacing: 0.5px;
+          color: #6A6A6A;
+          opacity: 1;" color="primary" class="ion-padding" position="stacked">Enter amount</ion-label>
+          <ion-item class="item container">
+            <ion-input type="number" [(ngModel)]="amount" style="text-align: center;
+            font: normal normal bold  18px/20px poppins;
+            letter-spacing: 1.44px;
+            color: #673BB8;">
+              </ion-input>
+              
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-label style="font: normal normal medium 9px/13px poppins;
+          letter-spacing: 0.5px;
+          color: #6A6A6A;
+          opacity: 1;" color="primary" class="ion-padding" position="stacked"></ion-label>
+          <ion-item (click)="calNew()" class="item container">
+            <ion-label style="text-align: center;
+            font: normal normal bold 18px/20px poppins;
+            letter-spacing: 1.44px;
+            color: #673BB8;">Calculate
+              </ion-label>
+              
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+ 
+
+
+
+  <ion-grid>
+    <ion-row  style="text-align: center;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Loan duration</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">{{res?.num_of_days}} Days <ion-button style="margin-top: -5px;" (click)="selectDays()" fill="none"><ion-icon color="primary" name="arrow-down-outline"></ion-icon></ion-button> </p>
+        </div>
+        
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center; margin-top: -20px;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Loan disbursement</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">₦{{loandisbursement | number}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center; margin-top: -20px;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Upfront Payment (10%)</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">₦{{upfrontpayment | number}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center; margin-top: -20px;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Current Balance</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">₦{{currentbalance | number}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center; margin-top: -20px;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Total repayment</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">₦{{totalrepayment | number}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center; margin-top: -20px;">
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal medium 12px/18px poppins;
+          letter-spacing: 0.67px;
+          color: #6A6A6A;
+          opacity: 1;">Daily repayment</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <p style="text-align: left;
+          font: normal normal bold 20px/26px poppins;
+          letter-spacing: 0.67px;
+          color: #673BB8;
+          opacity: 1;">₦{{dailyrepayment | number}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+   
+  
+   
+
+  </ion-grid>
+  <div class="ion-padding">
+    <ion-label class="terms-condition ion-text-wrap">
+      <input (click)="checkbox()" type="checkbox" />
+      <p
+        style="font-size: xx-small; display: inline;"
+        class="txt-secondary"
+        style="font-size: 18px !important;"
+      >
+        I've read and agreed to the
+        <a (click)="terms()">Terms and Conditions.</a>
+      </p>
+    </ion-label>
+  </div>
+  <!-- <div style="text-align: center;">
+    <ion-label (click)="agreeTerms()" style=" display: flex;
+    flex-direction: column;
+    align-items: center;" class="terms-condition ion-text-wrap">
+      <p
+        style="font-size: xx-small; display: inline;"
+     
+        style="font-size: 18px !important;"
+      > <ion-icon    [class]="termsagreed? 'px' : 'pn'" name="checkmark-circle-outline"></ion-icon>
+         I agree to the loan
+        <a>Terms and Conditions.</a>
+      </p>
+    </ion-label>
+  </div> -->
+
+
+  <section class="ion-padding">
+    
+    <ion-button [disabled]="!check" (click)="applyLoan()" color="primary" size="large" fill="solid" expand="block">  <ion-label>Apply</ion-label></ion-button>
+  </section>
+
+</ion-content>
+
+ 
+  
+
+
+
+
+
+ 

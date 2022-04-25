@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Loan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-item  class="ion-padding ion-text-center" color='primary'>
+   
+   
+    <div id="outer">
+      <div id="inner">
+        <ul><li>  <p>
+     
+          <small style=" align-items: center;
+          letter-spacing: 0px;
+          color: #FFFFFF;
+          opacity: 1;">Next payment due in:</small>
+        </p></li> <li>  
+           <h3 style="font:bold Poppins;
+           letter-spacing: 0.06px;
+           color: #F8F8F8;
+           opacity: 1;">
+            389 : 20 : 13 : 34
+         </h3></li> </ul>
+      </div>
+    </div>
+
+
+
+     
+
+    </ion-item>
+
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Loan Disbursed</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+       N30,000.00</ion-label>
+      
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Current Loan</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+      N30,600.00</ion-label>
+      <ion-note><ion-button color="success">Active</ion-button></ion-note>
+  </ion-item>
+  <ion-label style="font: normal normal medium 9px/13px Poppins;
+  letter-spacing: 0.5px;
+  color: #6A6A6A;
+  opacity: 1;" color="primary" class="ion-padding" position="stacked">Daily Payment</ion-label>
+  <ion-item style="--ion-background-color:#E0D9EC;" class="ion-padding item">
+    <ion-label style="font: normal normal bold 21px/31px Poppins;
+    letter-spacing: 1.17px;
+    color: #393939;">
+      N150.00</ion-label>
+      
+  </ion-item>
+   
+
+  <section class="ion-padding">
+    
+    <ion-button (click)="accessLoan()" color="primary" size="large" fill="solid" expand="block"> <ion-label *ngIf="buyingzit">Buying Zit</ion-label> <ion-label *ngIf="!buyingzit">Pay loan</ion-label></ion-button>
+  </section>
+  
+</ion-content>
+
+
+
+
+ 

@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Zit Booster</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div style="width: 100%;">
+      <ion-button class="ion-padding">
+        <p style="text-align: left;
+        letter-spacing: 1px;
+        color: #ffffff;
+        opacity: 1;" class="fs-22" [innerHTML]="coin?.toLocaleString('en-US')"></p>
+      </ion-button>
+ </div>
+  <ion-label style="margin-top: -10px;" color="primary" class="ion-padding" position="stacked">Boosted Zit</ion-label>
+  <ion-item class="ion-padding">
+    <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">
+       {{zit}}</ion-label>
+       <ion-note (click)="choosePrices()">
+        <ion-icon name="arrow-down-outline"></ion-icon>
+       </ion-note>
+  </ion-item>
+  <ion-label style="margin-top: -10px;" color="primary" class="ion-padding" position="stacked">Amount</ion-label>
+  <ion-item class="ion-padding">
+    <ion-label style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;">₦{{price | number}}</ion-label>
+  </ion-item>
+ 
+  <section class="ion-padding">
+      
+    <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+  </section>
+   
+    <section class="ion-padding">
+      
+      <ion-button (click)="buyZit()" color="primary" size="large" fill="solid" expand="block"> <ion-label *ngIf="buyingzit">Buying Zit</ion-label> <ion-label *ngIf="!buyingzit">Buy Zit</ion-label></ion-button>
+    </section>
+   
+
+</ion-content>

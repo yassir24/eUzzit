@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Send Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card [routerLink]="['/send-to-wallet']" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="assets/icons/wallet.png" />
+            </ion-thumbnail>
+      <ion-label>
+        <h2 style="font-weight: bold;">Send to wallet</h2>
+             
+             
+            </ion-label>
+    </ion-item>
+  </ion-card>
+    <ion-card [routerLink]="['/send-to-bank']" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="assets/icons/bank.png" />
+      </ion-thumbnail>
+      <ion-label>
+        
+        <h2 style="font-weight: bold;">Send to Bank Account</h2>
+             
+            </ion-label>
+    </ion-item>
+  </ion-card>
+    <ion-card [routerLink]="['/send-to-merchantid']" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="assets/icons/user.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2 style="font-weight: bold;">Merchant ID</h2>
+             
+            </ion-label>
+    </ion-item>
+  </ion-card>
+  </ion-list>
+  
+</ion-content>

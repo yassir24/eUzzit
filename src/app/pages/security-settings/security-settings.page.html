@@ -1,0 +1,96 @@
+<ion-header class="parallax-obj parallax-translate-obj header-transparent">
+  <ion-toolbar fill="solid" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" class="fs-10" *ngIf="ismain">
+      </ion-back-button>
+      <ion-button (click)="profileSettingsPage()" color="light" *ngIf="!ismain">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title
+      >{{changePass? "Change Password" : "Pin and Password
+      Settings"}}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-pading" *ngIf="!changePass">
+  <ion-list class="ion-padding">
+    <ion-item *ngIf="showPin" detail (click)="createPin()">Create Pin</ion-item>
+    <ion-item *ngIf="!showPin" detail (click)="updatePin()"
+      >Change Pin</ion-item
+    >
+    <ion-item *ngIf="!showPin" detail (click)="resetPin()">Reset Pin</ion-item>
+    <hr />
+    <ion-item detail (click)="changePass = !changePass"
+      >Change Password</ion-item
+    >
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="changePass">
+  <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+    <ion-item>
+      <ion-label position="floating">Old Password</ion-label>
+      <ion-input
+        formControlName="old_password"
+        type="{{showPassword? 'text' : 'password'}}"
+      ></ion-input>
+    </ion-item>
+    <p
+      class="txt-danger"
+      *ngIf="checkerror && !changePasswordForm.controls.old_password.valid"
+    >
+      <small>Enter Old Password</small>
+    </p>
+
+    <ion-item>
+      <ion-label position="floating">New Password</ion-label>
+      <ion-input
+        formControlName="new_password"
+        type="{{showPassword? 'text' : 'password'}}"
+      ></ion-input>
+    </ion-item>
+    <p
+      class="txt-danger"
+      *ngIf="checkerror && !changePasswordForm.controls.new_password.valid"
+    >
+      <small>Enter New Password</small>
+    </p>
+
+    <ion-item>
+      <ion-label position="floating">Confirm New Password</ion-label>
+      <ion-input
+        formControlName="new_password_confirmation"
+        type="{{showPassword? 'text' : 'password'}}"
+      ></ion-input>
+    </ion-item>
+    <p
+      class="txt-danger"
+      *ngIf="checkerror && !changePasswordForm.controls.new_password_confirmation.valid"
+    >
+      <small>Enter Old Password</small>
+    </p>
+
+    <br />
+
+    <ion-button
+      [disabled]="!changePasswordForm.valid || submitted"
+      (click)="changePassword()"
+    >
+      {{submitted? "Please wait ": "Change Password"}}
+      <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+    </ion-button>
+
+    <ion-button (click)="showPassword=!showPassword;">
+      View{{" "}}
+      <ion-icon
+        [name]="showPassword?'eye':'eye-off'"
+        item-right
+        showPassword="true"
+      >
+      </ion-icon>
+    </ion-button>
+  </form>
+</ion-content>

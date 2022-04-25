@@ -1,0 +1,68 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fund Account</ion-title>
+    <ion-button (click)="shareWallet()" fill="none" slot="end"> <ion-icon slot="end" name="share-social-outline"></ion-icon></ion-button>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fundWalletForm" (ngSubmit)="sendPostRequest()">
+ <div class="wrapper">
+    <ion-card  class="cc visa">
+    
+      <div class="container">
+        <div class="type">
+          <ion-img style="width: 58px;
+          height: 68px; padding: 5px;" src="assets/icons/fidelity.png"></ion-img> 
+        </div>
+        <div class="circuit">
+        </div>
+      </div>
+    
+      <div style="margin-top: 11px;" class="holder">
+        <span style="text-align: left;
+        font: normal normal 100 33px/40px Montserrat;
+        letter-spacing: 1.5px;
+        color: #FFFFFF;
+        opacity: 1;" class="number">{{userprofile?.virtual_account.account_number}}</span>
+        <span style="text-align: left;
+        font: normal normal 600 16px/19px montserrat;
+        letter-spacing: 1.14px;
+        color: #FFFFFF;
+        opacity: 1;" class="name">{{userprofile?.full_name | titlecase}}</span>
+     
+      </div>
+    </ion-card>
+  </div>
+  
+
+    <ion-item *ngIf="plt != 'ios'">
+      <ion-label color="primary" class="ion-padding" position="floating">Enter Amount</ion-label>
+
+      <ion-input 
+      [(ngModel)]="amount"
+      formControlName="amount"
+      type="number" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+    <section *ngIf="plt != 'ios'" class="ion-padding">
+      
+      <ion-button 
+      type="submit"
+      [disabled]="fundWalletForm.invalid || submitted"
+       color="primary" size="large" fill="solid" expand="block">
+       <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+          <ion-icon name="plus" *ngIf="!submitted"></ion-icon>
+          <ion-label *ngIf="submitted">Please Wait&hellip;</ion-label>
+          <ion-label *ngIf="!submitted">Fund Account</ion-label>
+      </ion-button>
+    </section>
+ 
+</form>
+</ion-content>

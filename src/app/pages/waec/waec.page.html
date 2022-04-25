@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>WAEC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item (click)="selectBiller()">
+    <ion-label color="primary">{{pageTitle}}</ion-label>
+      <ion-note><ion-icon name="arrow-down-outline"></ion-icon></ion-note>
+  </ion-item>
+  <form [formGroup]="jambForm" (ngSubmit)="buyJamb()">
+    <ion-item>
+      <ion-label color="primary" position="floating">Enter 1 as Quantity</ion-label>
+      <ion-input  required formControlName="account" type="number" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;" ></ion-input>
+    </ion-item>
+    <section class="ion-padding">
+      <ion-button (click)="chooseWallet()" color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+    </section>
+   
+      <section class="ion-padding">
+
+        <ion-button
+            color="primary"
+            expand="block"
+            size="large"
+            fill="outline"
+            type="submit"
+            expand="block"
+            [disabled]="jambForm.invalid || showLoader"
+          >
+          <ion-spinner name="crescent" *ngIf="showLoader"></ion-spinner>
+          <ion-label *ngIf="showLoader">Validating&hellip;</ion-label>
+          <ion-label *ngIf="!showLoader">Validate</ion-label>
+          </ion-button>
+      
+        <!-- <ion-button (click)="confirmModal()" color="primary" size="large" fill="outline" expand="block">Confirm</ion-button> -->
+      </section>
+
+    </form>
+
+</ion-content>

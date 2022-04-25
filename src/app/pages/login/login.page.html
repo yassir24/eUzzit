@@ -1,0 +1,86 @@
+<ion-content>
+  <div class="center">
+    <img src="assets/icons/unnamed-3.png" alt="">
+
+    <h1 style="font: normal normal bold 28px/30px Worksans;
+    letter-spacing: 0px;
+    color: #393F45;
+    opacity: 1;">Welcome back</h1>
+
+    <p style="text-align: left;
+    font: normal normal medium 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #D0D0D0;
+    opacity: 1;">Sign in / Sign up</p>
+
+  </div>
+  <form class="" [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+      <ion-item color='medium' class="ion-padding">
+    <ion-input  formControlName="email"
+    type="text"
+    placeholder="Email, Username or Phone number" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="at-outline"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <small style="margin-left: 20px;"
+  class="txt-danger"
+  *ngIf="checkerror && !loginForm.controls.email.valid"
+>
+  Please enter a valid ID.
+</small>
+  <ion-item color='medium' class="ion-padding">
+    <ion-input formControlName="password"
+    [type]="showPassword ? 'password' : 'text'"
+    placeholder="Password" style="text-align: left;
+    font: normal normal normal 16px/18px Worksans;
+    letter-spacing: 0px;
+    color: #000000;">
+      <ion-icon style="margin-right: 10px; font-size: 20px;" name="lock-closed-outline"></ion-icon>
+    </ion-input>
+    <ion-icon color="dark"
+    [name]="showPassword?'eye-off':'eye'"
+    item-right
+    (click)="showPassword=!showPassword;"
+    showPassword="true"
+  ></ion-icon>
+  </ion-item>
+
+  <small style="margin-left: 20px;"
+  class="txt-danger"
+  *ngIf="checkerror && !loginForm.controls.password.valid"
+>
+  Your password needs more than 6 characters.
+</small>
+  <div class="centerx">
+    <p [routerLink]="['/forgot-password']">Forgot Password? / Reset</p>
+  </div>
+
+  <section class="ion-padding">
+      
+    <ion-button [disabled]="submitted"
+    color="primary"
+    type="submit" color="primary" size="large" fill="solid" expand="block">
+    <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+    <ion-label *ngIf="submitted">Please Wait!</ion-label>
+    <!-- <ion-icon
+            name="log-in"
+            slot="start"
+            *ngIf="!submitted"
+          ></ion-icon> -->
+          <ion-label *ngIf="!submitted"> Login </ion-label>
+  </ion-button>
+  </section>
+</form>
+
+  <div class="centerx">
+    <p>Don’t Have an Account? <span [routerLink]="['/register']" style="text-align: center;
+      font: normal normal 600 14px/16px Worksans;
+      letter-spacing: 0px;
+      color: #FF7600;">Sign Up</span></p>
+  </div>
+
+
+</ion-content>

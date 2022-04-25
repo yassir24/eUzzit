@@ -1,0 +1,24 @@
+
+
+<ion-content>
+  <ion-card (click)="selectPrice(x)" *ngFor="let x of prices" style="background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 20px;
+    ">
+    <ion-item lines="none">
+      <!-- <ion-thumbnail slot="start">
+        <img style="width: 36px;
+        height: 44px; object-fit: contain;" src="../../../assets/icons/money.png" />
+      </ion-thumbnail> -->
+      <ion-label><h3>{{x.name}}</h3>
+              <p>₦{{x.price | number}}</p>
+            </ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <section class="ion-padding">
+      
+    <ion-button (click)="closeModal()" color="primary" size="large" fill="outline" expand="block">Cancel</ion-button>
+  </section>
+</ion-footer>

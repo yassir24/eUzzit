@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+  
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      
+    <ion-title>Send To Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+  [formGroup]="sendMoneyForm"
+  (ngSubmit)="validateSend()"
+>
+    <ion-item>
+      <ion-label  color="primary" position="floating">Wallet ID of Receiver</ion-label>
+      <ion-input  required
+      (ionBlur)="verifyWallet()"
+      (ionChange)="walletHolder = ''"
+      formControlName="to_user"
+      type="tel" style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="walletHolder">
+      <ion-label *ngIf="walletHolder" color="primary" position="floating">Wallet holder</ion-label>
+
+      <ion-input 
+      required
+          [value]="walletHolder"
+          type="text"
+          readonly 
+      
+      style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Enter amount to send</ion-label>
+
+      <ion-input 
+      required
+      formControlName="amount"
+      type="number"
+      autofocus style="text-align: left;
+      font: normal normal normal 16px/18px Worksans;
+      letter-spacing: 0px;
+      color: #000000;"></ion-input>
+    </ion-item>
+  
+   
+      <section class="ion-padding">
+      
+        <ion-button (click)="chooseWallet()"  color="primary" size="large" fill="solid" expand="block">{{buttontitle | titlecase}}</ion-button>
+      </section>
+      <section class="ion-padding">
+      
+        <ion-button
+        type="submit"
+        [disabled]="!walletHolder || sendMoneyForm.invalid || submitSend" 
+         color="primary" size="large" fill="outline" expand="block"><ion-spinner name="crescent" *ngIf="submitSend"></ion-spinner>
+         <ion-label *ngIf="submitSend">Validating Wallet &hellip;</ion-label>
+         <ion-label *ngIf="!submitSend">Confirm</ion-label></ion-button>
+      </section>
+      </form>
+
+</ion-content>

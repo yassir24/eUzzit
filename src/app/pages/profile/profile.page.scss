@@ -1,0 +1,25 @@
+.centerx {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .center {
+    text-align: center;
+  }
+
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  ion-item{
+    --highlight-background: none;
+    --inner-border-width: 0;
+    
+    // --border-width: var(--border-top-width) var(--border-end-width) var(--border-bottom-width) var(--border-start-width);
+    // --border-color: #FF38AD;
+    --border-radius: 25px;
+    // --min-height: 110px !important;
+}
