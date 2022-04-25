@@ -182,12 +182,19 @@
   <section class="ion-padding">
       
     <ion-button  [disabled]="submitted || !signUpForm.valid || !check"
-    type="submit" [routerLink]="['/verify']" color="primary" size="large" fill="solid" expand="block">
+    type="submit" color="primary" size="large" fill="solid" expand="block">
 
     <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
-          <ion-label *ngIf="submitted">Please Wait!</ion-label>
+    <ion-label *ngIf="submitted">Please Wait!</ion-label>
+    <ion-icon
+      name="person-add"
+      slot="start"
+      *ngIf="!submitted"
+      class="txt-white"
+    ></ion-icon>
+    <ion-label *ngIf="!submitted">Sign Up</ion-label>
     
-    Signup</ion-button>
+    </ion-button>
   </section>
 
 </form>

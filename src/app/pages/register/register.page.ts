@@ -110,7 +110,7 @@ export class RegisterPage implements OnInit {
 
   terms() {
     console.log("ll");
-    this.iab.create("https://euzzit.com/terms.html");
+    this.iab.create("https://euzzit.com/terms");
   }
 
   async presentLoading() {

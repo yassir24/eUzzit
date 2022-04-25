@@ -260,7 +260,7 @@ export class AppComponent {
     },
     {
       title: 'Pay Merchant',
-      url: '/type',
+      url: '/send-to-merchantid',
       icon: 'person'
     },
     {

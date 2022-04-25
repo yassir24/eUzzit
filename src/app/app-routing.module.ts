@@ -80,7 +80,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'verify',
+    path: 'validate-phone',
     loadChildren: () => import('./pages/verify/verify.module').then( m => m.VerifyPageModule)
   },
   {

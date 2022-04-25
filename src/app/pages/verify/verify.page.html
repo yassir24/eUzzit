@@ -5,6 +5,7 @@
 </ion-header> -->
 
 <ion-content>
+  <form novalidate>
 <div class="centerx">
    <h1 style="font: normal normal bold 24px/28px Worksans;
   letter-spacing: 0px;
@@ -16,25 +17,40 @@
   height: 133px;" src="../../../assets/icons/Password reset.png" alt="">
 </div>
 
-<div class="centerx">
-  <ng-otp-input style="margin-top: 56px;"  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+<ion-item class="centerx">
+  <!-- <ng-otp-input style="margin-top: 56px;" [(ngModel)]="code"
+  name="code"
+  required
+  type="text"  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input> -->
+  <ion-input
+  [(ngModel)]="code"
+  name="code"
+  required
+  type="text"
+  placeholder="Validation Code"
+>
+</ion-input>
 
-</div>
+</ion-item>
  
 
 <div style="margin-top: 40px;" class="centerx">
-  <p>Code expires in : <span style="font: normal normal normal 12px/14px Worksans;
+  <!-- <p>Code expires in : <span style="font: normal normal normal 12px/14px Worksans;
     letter-spacing: 0px;
-    color: #FF7600;">00 : 56</span> </p>
-  <p>Didn’t receive code? <span style="text-decoration: underline;
+    color: #FF7600;">00 : 56</span> </p> -->
+  <p (click)="resendCode()">Didn’t receive code? <ion-button style="
     font: normal normal normal 14px/16px Worksans;
-    letter-spacing: 0px;
-    color: #FF7600;">Resend Code</span></p>
+    letter-spacing: 0px;" (click)="resendCode()">Resend Code</ion-button></p>
 </div>
 
 <section style="margin-top: 158px;" class="ion-padding">
       
-  <ion-button [routerLink]="['/']" color="primary" size="large" fill="solid" expand="block">Verify</ion-button>
+  <ion-button  (click)="verifyOTP()" type="submit" [disabled]="!code" color="primary" size="large" fill="solid" expand="block">
+    <ion-spinner name="crescent" *ngIf="submitted"></ion-spinner>
+    <ion-label *ngIf="submitted">Please Wait!</ion-label>
+    <ion-label *ngIf="!submitted">Verify</ion-label>
+  </ion-button>
 </section>
+</form>
 
 </ion-content>
