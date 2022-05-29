@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
@@ -114,7 +114,11 @@ export class ZitBoosterPage implements OnInit {
         return this.http.post<any>(`${this.config.api_url}/user/zit-purchase/payment` , {
           zit_sale_id: this.zitid,
           wallet: this.wallet
-        }).subscribe(res =>{
+        },{
+          headers: new HttpHeaders({ pin: pin }),
+        }
+        
+        ).subscribe(res =>{
           console.log('this is the res', res);
           if (res.status === "success") {
             this.showSuccess(res.message, res.data.coin_earned )
@@ -129,7 +133,12 @@ export class ZitBoosterPage implements OnInit {
             this.presentToast(res.message);
             // this.submitted = false;
           }
-        })
+        },
+        (error) => {
+          console.log('this is the error ', error.error.message)
+          this.presentToast(error.error.message);
+        }
+        )
       }
     }
    
